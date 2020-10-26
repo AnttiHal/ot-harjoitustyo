@@ -1,0 +1,114 @@
+commit 092d52fad178b5e83f958827beaafd0a656846b1
+Author: AnttiHalmetoja <anttihalmetoja@gmail.com>
+Date:   Mon Oct 26 11:09:13 2020 +0200
+
+    tiedosto poistettu ja toinen tiedosto uudelleennimetty
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit a8590a1e3e743575a8bad6646df0a1724146c46d
+Author: AnttiHalmetoja <anttihalmetoja@gmail.com>
+Date:   Mon Oct 26 11:04:39 2020 +0200
+
+    kolme tiedostoa luotu
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 864417772dfc175c9b4aa0f0861e6d5cc727adae
+Author: AnttiHalmetoja <anttihalmetoja@gmail.com>
+Date:   Mon Oct 26 10:58:41 2020 +0200
+
+    mutoksia kahteen tiedostoon
+
+ eka.txt     | 4 ++--
+ kolmas.text | 7 ++++++-
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+commit c10e277b4bccf718b8f50e46f6aeb47b7bd995e0
+Author: AnttiHalmetoja <anttihalmetoja@gmail.com>
+Date:   Mon Oct 26 10:54:18 2020 +0200
+
+    tiedosto nimetty uudelleen
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 10bb5e0483986da0c873ffc838c82db225521cec
+Author: AnttiHalmetoja <anttihalmetoja@gmail.com>
+Date:   Mon Oct 26 10:52:09 2020 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit e6af272cfd5c2c9ab246996df66547d73e51a629
+Author: AnttiHalmetoja <anttihalmetoja@gmail.com>
+Date:   Mon Oct 26 10:49:24 2020 +0200
+
+    poistettu tekstiä ja lisätty tekstiä
+
+ tiedosto.txt | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+commit d81212217e5e62d8d43b272f64a2a413c7f5c271
+Author: AnttiHalmetoja <anttihalmetoja@gmail.com>
+Date:   Mon Oct 26 10:47:37 2020 +0200
+
+    lisätty todella paljon tekstiä
+
+ tiedosto.txt | 231 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 231 insertions(+)
+
+commit 885d645ad3ef8e29a9e94ee6fb40d33029a8397b
+Author: AnttiHalmetoja <anttihalmetoja@gmail.com>
+Date:   Mon Oct 26 10:31:09 2020 +0200
+
+    stuff-hakemisto ja tiedosto sinne sisälle lisätty
+
+ stuff/tiedostoinen.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit f84afa9afb40283517f0ffd0cc94289b2188c4b8
+Author: AnttiHalmetoja <anttihalmetoja@gmail.com>
+Date:   Mon Oct 26 10:29:26 2020 +0200
+
+    kaksi muutosta
+
+ kolmas.text | 1 +
+ toinen.txt  | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 3fa69aa86d6bfea29aab3c9389cf7b3fb3a2b185
+Author: AnttiHalmetoja <anttihalmetoja@gmail.com>
+Date:   Mon Oct 26 10:28:10 2020 +0200
+
+    kolmas.txt luotu
+
+ kolmas.text | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b837c4c046f044201543a011c6108aeee3116e58
+Author: AnttiHalmetoja <anttihalmetoja@gmail.com>
+Date:   Mon Oct 26 10:25:37 2020 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit d5d17bb2643f80a6894e5c5c182b535c5240017e
+Author: AnttiHalmetoja <anttihalmetoja@gmail.com>
+Date:   Mon Oct 26 10:21:35 2020 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
