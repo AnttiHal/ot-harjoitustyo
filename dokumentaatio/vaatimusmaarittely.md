@@ -10,7 +10,8 @@ Sovelluksella on ainostaan peruskäyttäjiä, jotka voivat kirjautua ja tehdä h
 
 ## Käyttöliittymäluonnos
 
-<img src="https://raw.githubusercontent.com/>
+<img src="https://raw.githubusercontent.com/dokumentaatio/images/kayttoliittymaluonnos.png>
+          
 
 ## Perusversion suunniteltu toiminnallisuus
 ### Ennen käyttäjänimen antamista
