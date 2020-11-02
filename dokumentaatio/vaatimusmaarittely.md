@@ -10,7 +10,7 @@ Sovelluksella on ainostaan peruskäyttäjiä, jotka voivat kirjautua ja tehdä h
 
 ## Käyttöliittymäluonnos
 
-<img src="https://raw.githubusercontent.com/AnttiHal/ot-harjoitustyo/master/dokumentaatio/images/kayttoliittymaluonnos.png>
+<img src="https://raw.githubusercontent.com/AnttiHal/ot-harjoitustyo/master/dokumentaatio/images/kayttoliittymaluonnos.png">
           
 
 ## Perusversion suunniteltu toiminnallisuus
