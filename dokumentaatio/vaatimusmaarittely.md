@@ -10,4 +10,8 @@ Sovelluksella on ainostaan peruskäyttäjiä, jotka voivat kirjautua ja tehdä h
 
 ## Käyttöliittymäluonnos
 
-## Toiminnallisuus
+## Perusversion suunniteltu toiminnallisuus
+-käyttäjä voi rekistöröityä käyttäjäksi
+ -voi antaa käyttäjänimensä
+
+## Jatkokehityksessä suunniteltu toiminnallisuus
