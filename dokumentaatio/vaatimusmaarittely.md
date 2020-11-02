@@ -11,7 +11,15 @@ Sovelluksella on ainostaan peruskäyttäjiä, jotka voivat kirjautua ja tehdä h
 ## Käyttöliittymäluonnos
 
 ## Perusversion suunniteltu toiminnallisuus
--käyttäjä voi rekistöröityä käyttäjäksi
- -voi antaa käyttäjänimensä
+### Ennen käyttäjänimen antamista
+- käyttäjä voi valita käyttäjänimensä
+ - nimi voi olla 3-10 merkkiä pitkä ja sisältää merkit A-Z, 0-9
+ - jos nimi on jo käytössä, sovellus pyytää valitsemaan toisen
+ 
+### Nimen antamisen jälkeen
+- Avautuu pelin avausnäkymä jossa nappi kännistä peli
+- Peli toistaa käyttäjälle yhden audiotiedoston kerrallaan ja pelaajan on tunnistettava kyseessä olevan kolmisoinnun tyyppi
+ - Sointutyypit: Duuri, molli, vähennetty, ylinouseva 
+ 
 
 ## Jatkokehityksessä suunniteltu toiminnallisuus
