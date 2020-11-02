@@ -2,7 +2,7 @@
 
 ## Sovelluksen tarkoitus
 
-Sovelluksen avulla harjoitellaan tunnistamaan erilaisia sointutyyppejä. Sovellus on peli, jossa vastaa kysymyksiin kuulemansa soinnun perusteella. Suorituksesta saa pisteitä ja parhaiten suoriutuneiden pisteet on näkyvillä High score -listauksessa.
+Sovelluksen avulla harjoitellaan tunnistamaan erilaisia sointutyyppejä. Sovellus on peli, jossa pelaaja valitsee oikean sointutyypin annetuista vaihtoehdoista kuulemansa soinnun perusteella. Suorituksesta saa pisteitä ja parhaiten suoriutuneiden pisteet on näkyvillä High score -listauksessa.
 
 ## Käyttäjät
 
@@ -10,11 +10,13 @@ Sovelluksella on ainostaan peruskäyttäjiä, jotka voivat kirjautua ja tehdä h
 
 ## Käyttöliittymäluonnos
 
+<img src="https://raw.githubusercontent.com/>
+
 ## Perusversion suunniteltu toiminnallisuus
 ### Ennen käyttäjänimen antamista
 - käyttäjä voi valita käyttäjänimensä
   - nimi voi olla 3-10 merkkiä pitkä ja sisältää merkit A-Z, 0-9
-  - jos nimi on jo käytössä, sovellus pyytää valitsemaan toisen
+  - jos nimi on jo käytössä, sovellus kertoo sen käyttäjälle ja varmistaa, että käyttäjä haluaa jatkaa
 - Linkki High score -näkymään
 
 ### Pelin aloitus
@@ -35,6 +37,6 @@ Seuraavia toimintoja voi mahdollisesti lisätä sovellukseen, jos prosessi etene
 - Käyttäjän rekisteröityminen ja kirjautuminen
 - Mahdolliset käyttäjäroolit, esim. pääkäyttäjä, joka voisi tarkastella kaikkien käyttäjien tuloksia sekä poistaa käyttäjiä
 - Level 2, jossa mukana myös nelisoinnut (7, maj7, 6, m7)
-- 
+- Testaa audiota - nappi pelin aloitusnäkymään
 
 
