@@ -30,13 +30,17 @@ Sovelluksella on ainostaan peruskäyttäjiä, jotka voivat kirjautua ja tehdä h
 - pelaaja saa eteensä tulosnäkymän, jossa näkyy mitkä soinnut menivät oikein ja mitkä väärin
 - pelaaja saa tiedon pääsikö high score -listalle.
 - pelaaja näkee suorituksen keston
+- Mahdollisuus joko
+ - lopettaa pelaaminen lopeta-painikkeesta
+ - pelata kierros uudestaan
+ - tarkastella high score -listaa
  
 
 ## Jatkokehityksessä suunniteltu toiminnallisuus
 
 Seuraavia toimintoja voi mahdollisesti lisätä sovellukseen, jos prosessi etenee nopeasti.
 - Käyttäjän rekisteröityminen ja kirjautuminen
-- Mahdolliset käyttäjäroolit, esim. pääkäyttäjä, joka voisi tarkastella kaikkien käyttäjien tuloksia sekä poistaa käyttäjiä
+- Mahdolliset käyttäjäroolit, esim. normikäyttäjän lisäksi pääkäyttäjä, joka voisi tarkastella kaikkien käyttäjien tuloksia sekä poistaa käyttäjiä
 - Level 2, jossa mukana myös nelisoinnut (7, maj7, 6, m7)
 - Testaa audiota - nappi pelin aloitusnäkymään
 
