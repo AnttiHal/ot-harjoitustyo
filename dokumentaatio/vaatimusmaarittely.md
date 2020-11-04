@@ -31,9 +31,9 @@ Sovelluksella on ainostaan peruskäyttäjiä, jotka voivat kirjautua ja tehdä h
 - pelaaja saa tiedon pääsikö high score -listalle.
 - pelaaja näkee suorituksen keston
 - Mahdollisuus joko
- - lopettaa pelaaminen lopeta-painikkeesta
- - pelata kierros uudestaan
- - tarkastella high score -listaa
+  - lopettaa pelaaminen lopeta-painikkeesta
+  - pelata kierros uudestaan
+  - tarkastella high score -listaa
  
 
 ## Jatkokehityksessä suunniteltu toiminnallisuus
