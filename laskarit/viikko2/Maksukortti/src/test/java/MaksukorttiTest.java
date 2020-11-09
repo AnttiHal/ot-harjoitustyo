@@ -30,6 +30,8 @@ public class MaksukorttiTest {
         kortti.syoMaukkaasti();
         assertEquals("Kortilla on rahaa 6.0 euroa", kortti.toString());
     }
+    
+    
 
     @Test
     public void syoEdullisestiEiVieSaldoaNegatiiviseksi() {
