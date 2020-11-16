@@ -3,17 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
-
-import domain.Question;
+package sointuvisa.domain;
 
 /**
  *
  * @author anttihalmetoja
  */
-public interface questionDao {
+public class User {
+    private String username;
+
+    public User(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
     
-    Question create(Question question) throws Exception;
     
     
-}
+    
+} 

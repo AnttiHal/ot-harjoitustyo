@@ -3,23 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domain;
+package sointuvisa.domain;
 
 /**
  *
  * @author anttihalmetoja
+ * sointuvisan yksittäistä kysymystä kuvaava luokka
  */
 public class Question {
     private int id;
     private String question;
     private String audio_url;
-    private String type;
+    private String chordType;
 
-    public Question(int id, String audio_url, String type) {
+    public Question(int id, String audio_url, String chordType) {
         this.id = id;
         this.question = "Mikä sointu?";
         this.audio_url = audio_url;
-        this.type = type;
+        this.chordType = chordType;
+    }
+
+    public String getAudio_url() {
+        return audio_url;
     }
     
 }

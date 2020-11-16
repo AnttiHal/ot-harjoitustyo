@@ -3,25 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domain;
+package sointuvisa.dao;
 
 /**
  *
  * @author anttihalmetoja
  */
-public class User {
-    private String username;
-
-    public User(String username) {
-        this.username = username;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
+public class FileUserDao {
     
-    
-    
-    
-} 
+}
