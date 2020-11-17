@@ -6,7 +6,9 @@ Nappia painamalla käyttäjä kuulee tunnistettavan soinnun ja sen jälkeen hän
 Ulkoasu on toteutettu javafx:llä.<br>
 Projektin koodin pystyy suorittamaan NetBeansin vihreällä napilla _tai/ja_ komennolla 
 <code>mvn compile exec:java -Dexec.mainClass=Main</code><br>
-Sovellusta pystyy testaamaan komennolla <code>mvn tst</code>
+Sovellusta pystyy testaamaan komennolla <code>mvn test</code><br>
+Sovelluksella saa generoitua testikattavuusraportin komennolla <code>mvn test jacoco:report</code>
+
 ## Näkymät
 Aloitusnäyttö, jossa käyttäjänimen anto.
 Aloitusnäyttö, jossa käyttäjänimi ja aloita-painike
