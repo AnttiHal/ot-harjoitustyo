@@ -10,8 +10,8 @@ Sovellusta pystyy testaamaan komennolla <code>mvn test</code><br>
 Sovelluksella saa generoitua testikattavuusraportin komennolla <code>mvn test jacoco:report</code>
 
 ## Näkymät
-Aloitusnäyttö, jossa käyttäjänimen anto.
-Aloitusnäyttö, jossa käyttäjänimi ja aloita-painike
+Alkunäyttö, jossa käyttäjänimen anto.<br>
+Aloitusnäyttö, jossa käyttäjänimi ja aloita-painike. <br>
 pelinäkymä, jossa kuuntele-nappi, radiobuttonit valintaa varten, sekä seuraava-nappi
 
 
