@@ -8,6 +8,9 @@
 package sointuvisa.ui;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
@@ -41,20 +45,46 @@ import sointuvisa.domain.SointuvisaService;
  */
 public class sointuvisaUi extends Application {
     private SointuvisaService sointuvisaService;
+    Scene usernameInputScene, startScene, questionScene, scene2;
     
     @Override
-    public void init() {
-        FileUserDao userDao = new FileUserDao("users.txt");
-        FileQuestionDao todoDao = new FileQuestionDao("todos.txt", userDao);
-        // alustetaan sovelluslogiikka
-        sointuvisaService = new SointuvisaService(todoDao, userDao);
+    public void init() throws IOException, Exception {
+        Properties properties = new Properties();
+
+        properties.load(new FileInputStream("config.properties"));
+        
+        String userFile = properties.getProperty("userFile");
+        String questionFile = properties.getProperty("questionFile");
+            
+        FileUserDao userDao = new FileUserDao(userFile);      
+        FileQuestionDao questionDao = new FileQuestionDao(questionFile);
+        
+        sointuvisaService = new SointuvisaService(questionDao, userDao);
     }
 
     
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-        Scene scene1, scene2;
+        //usernameInputScene
+        VBox usernameInputPane = new VBox(10);
+        
+        usernameInputPane.setPadding(new Insets(10));
+        Label loginLabel = new Label("käyttäjätunnus");
+        TextField usernameInput = new TextField();
+        
+        Button okButton = new Button("OK");                
+        Label loginMessage = new Label();
+        
+        okButton.setOnAction(e->{
+            String username = usernameInput.getText();
+            sointuvisaService.createUser(username);
+            usernameInput.setText("");
+            primaryStage.setScene(questionScene);   
+        });  
+        usernameInputPane.getChildren().addAll(loginMessage, loginLabel, usernameInput, okButton);
+        usernameInputScene = new Scene(usernameInputPane,300,250);
+        
+        
         //Creating a Text object 
         Text text = new Text();
         text.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
@@ -95,12 +125,12 @@ public class sointuvisaUi extends Application {
         pane.getChildren().add(chosen);
         pane.getChildren().add(next);
 
-        scene1 = new Scene(pane);
+        questionScene = new Scene(pane);
         
         //Toisen scenen testaus
         Label label2 = new Label("This is the second scene");
         Button button2 = new Button("Go to scene 1");
-        button2.setOnAction(e -> primaryStage.setScene(scene1));
+        button2.setOnAction(e -> primaryStage.setScene(questionScene));
         VBox layout2 = new VBox(20);
         layout2.getChildren().addAll(label2, button2);
         scene2 = new Scene(layout2, 300, 250);
@@ -119,7 +149,7 @@ public class sointuvisaUi extends Application {
         String path11 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-1.aif";
         String path12 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-2.aif";
         String path13 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-3.aif";
-
+        FileQuestionDao.findQuestionById(1);
         Media media1 = new Media(new File(path1).toURI().toString());
         Media media2 = new Media(new File(path2).toURI().toString());
         MediaPlayer mediaPlayer1 = new MediaPlayer(media1);
@@ -145,7 +175,7 @@ public class sointuvisaUi extends Application {
         
         next.setOnAction(e -> primaryStage.setScene(scene2));
         primaryStage.setTitle("Sointuvisa");
-        primaryStage.setScene(scene1);
+        primaryStage.setScene(usernameInputScene);
         primaryStage.show();
 
     }

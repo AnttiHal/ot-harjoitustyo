@@ -27,4 +27,12 @@ public class Question {
         return audio_url;
     }
     
+    public int getId() {
+        return this.id;
+    }
+    
+    public String getChordType() {
+        return this.chordType;
+    }
+    
 }

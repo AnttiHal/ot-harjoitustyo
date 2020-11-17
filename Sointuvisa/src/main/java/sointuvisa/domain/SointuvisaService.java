@@ -34,4 +34,16 @@ public class SointuvisaService {
     public User getUser() {
         return user;
     }
+    
+    public Boolean createUser(String username) {
+        
+        User user= new User(username);
+        try {
+            userDao.create(user);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+    
 }
