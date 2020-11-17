@@ -149,7 +149,7 @@ public class sointuvisaUi extends Application {
         String path11 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-1.aif";
         String path12 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-2.aif";
         String path13 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-3.aif";
-        FileQuestionDao.findQuestionById(1);
+        
         Media media1 = new Media(new File(path1).toURI().toString());
         Media media2 = new Media(new File(path2).toURI().toString());
         MediaPlayer mediaPlayer1 = new MediaPlayer(media1);
