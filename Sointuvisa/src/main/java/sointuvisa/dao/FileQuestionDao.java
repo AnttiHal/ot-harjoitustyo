@@ -17,7 +17,7 @@ import sointuvisa.domain.Question;
  *
  * @author anttihalmetoja
  */
-public class FileQuestionDao implements questionDao{
+public class FileQuestionDao implements questionDao {
 
     public ArrayList<Question> questions;
     private String file;
@@ -26,9 +26,8 @@ public class FileQuestionDao implements questionDao{
     public FileQuestionDao(String file) throws Exception {
         this.questions = new ArrayList<>();
         this.file = file;
-        this.audioUrls= new ArrayList<>();
-        
-        
+        this.audioUrls = new ArrayList<>();
+
         try {
             this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-major-1.aif");
             this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-major-2.aif");
@@ -44,65 +43,62 @@ public class FileQuestionDao implements questionDao{
             this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-2.aif");
             this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-3.aif");
 
-            
-            for (int i=1;i<14;i++) {
-                String audio_url=this.audioUrls.get(i-1);
-                String type="";
+            for (int i = 1; i < 14; i++) {
+                String audio_url = this.audioUrls.get(i - 1);
+                String type = "";
                 if (audio_url.contains("minor")) {
-                    type="molli";
-                } else if (audio_url.contains("major")){
-                    type="duuri";
-                } else if (audio_url.contains("augmented")){
-                    type="ylinouseva";
-                } else if (audio_url.contains("diminished")){
-                    type="vähennetty";
+                    type = "molli";
+                } else if (audio_url.contains("major")) {
+                    type = "duuri";
+                } else if (audio_url.contains("augmented")) {
+                    type = "ylinouseva";
+                } else if (audio_url.contains("diminished")) {
+                    type = "vähennetty";
                 }
-                
-                
-                Question question = new Question(i, this.audioUrls.get(i-1), type);
+
+                Question question = new Question(i, this.audioUrls.get(i - 1), type);
                 questions.add(question);
                 save();
-            }                                   
+            }
         } catch (Exception e) {
             FileWriter writer = new FileWriter(new File(file));
             writer.close();
-        }                            
+        }
     }
-    
-    private void save() throws Exception{
-        try (FileWriter writer = new FileWriter(new File(file))) {
+
+    private void save() throws Exception {
+        try ( FileWriter writer = new FileWriter(new File(file))) {
             for (Question question : questions) {
-                writer.write(question.getId() + ";" + question.getAudio_url() + ";" + question.getChordType()+"\n");
-                
+                writer.write(question.getId() + ";" + question.getAudio_url() + ";" + question.getChordType() + "\n");
+
             }
         }
-    }  
-    
+    }
+
     public Question findQuestionById(int id) throws FileNotFoundException {
-        
+
         Scanner reader = new Scanner(new File(file));
-        String url="";
-        String type="";
+        String url = "";
+        String type = "";
         while (reader.hasNextLine()) {
             String line = reader.nextLine();
             String[] palat = line.split(";");
             if (palat[0].equals(id)) {
-                url=palat[1];
-                type=palat[2];
+                url = palat[1];
+                type = palat[2];
                 break;
             }
         }
-        Question question= new Question(id, url, type);
+        Question question = new Question(id, url, type);
         return question;
     }
-    
-    
+
     @Override
     public Question create(Question question) throws Exception {
         questions.add(question);
         save();
-        
-       return question;
+
+        return question;
     }
-    
+
 }
