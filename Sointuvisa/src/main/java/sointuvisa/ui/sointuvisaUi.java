@@ -45,93 +45,150 @@ import sointuvisa.domain.SointuvisaService;
  * @author anttihalmetoja
  */
 public class sointuvisaUi extends Application {
+
     private SointuvisaService sointuvisaService;
     private TextField usernameInput;
-    Scene usernameInputScene, startScene, questionScene, scene2;
-    
+    Scene usernameInputScene, startScene, qScene1,
+            qScene2, qScene3, qScene4, qScene5, qScene6, qScene7, qScene8,
+            qScene9, qScene10, scene2;
+
     @Override
     public void init() throws IOException, Exception {
         Properties properties = new Properties();
 
         properties.load(new FileInputStream("config.properties"));
-        
+
         String userFile = properties.getProperty("userFile");
         String questionFile = properties.getProperty("questionFile");
-            
-        FileUserDao userDao = new FileUserDao(userFile);      
+
+        FileUserDao userDao = new FileUserDao(userFile);
         FileQuestionDao questionDao = new FileQuestionDao(questionFile);
-        
+
         sointuvisaService = new SointuvisaService(questionDao, userDao);
     }
 
-    
     @Override
     public void start(Stage primaryStage) throws Exception {
+        
+        
+        
         //usernameInputScene
+        Text header = header();
         VBox usernameInputPane = new VBox(10);
-        
+
         usernameInputPane.setPadding(new Insets(10));
-        Label loginLabel = new Label("käyttäjätunnus");
-         usernameInput = new TextField();
-        
-        Button okButton = new Button("OK");                
+        Label loginLabel = new Label("Anna käyttäjänimesi:");
+        usernameInput = new TextField();
+
+        Button okButton = new Button("OK");
         Label loginMessage = new Label();
-        
-        okButton.setOnAction(e->{
+
+        okButton.setOnAction(e -> {
             String username = usernameInput.getText();
             sointuvisaService.createUser(username);
             usernameInput.setText("");
-            primaryStage.setScene(startScene);   
-        });  
-        usernameInputPane.getChildren().addAll(loginMessage, loginLabel, usernameInput, okButton);
-        usernameInputScene = new Scene(usernameInputPane,300,250);
-        
+            primaryStage.setScene(startScene);
+        });
+        usernameInputPane.getChildren().addAll(header, loginMessage, loginLabel, usernameInput, okButton);
+        usernameInputScene = new Scene(usernameInputPane, 300, 250);
+
         //Start scene
         VBox startPane = new VBox(10);
         Text welcomeText = new Text();
         welcomeText.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
-        
+
         welcomeText.setText("Tervetuloa opettelemaan \nsointujen tunnistusta!\n\n");
         welcomeText.setX(50);
         welcomeText.setY(50);
         Button startButton = new Button("Aloita");
-        startButton.setOnAction(e->{
-            
-            primaryStage.setScene(questionScene);   
-        });  
+        startButton.setOnAction(e -> {
+            primaryStage.setScene(qScene1);
+        });
         startPane.getChildren().add(welcomeText);
         startPane.getChildren().add(startButton);
         startScene = new Scene(startPane, 300, 200);
+
         
-        //QuestionScene 
-        Question q= sointuvisaService.getQuestionById(1);
-                
-        Text text = new Text();
-        text.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
-        text.setText("Sointuvisa");
-        text.setX(50);
-        text.setY(50);
+        
+        //QuestionScene 1
+        Question q1 = sointuvisaService.getQuestionById(1);
+        VBox p1 = addQuestiontemplate(q1);
+        Button next1 = new Button("Seuraava");
+        p1.getChildren().add(next1);
+        next1.setOnAction(e -> {
+            primaryStage.setScene(qScene2);
+            
+                });
+        qScene1 = new Scene(p1);
+        p1.getChildren().get(3)
+
+        //QuestionScene 2
+        Question q2 = sointuvisaService.getQuestionById(2);
+        VBox p2 = addQuestiontemplate(q2);
+        Button next2 = new Button("Seuraava");
+        p2.getChildren().add(next2);
+        next2.setOnAction(e -> primaryStage.setScene(qScene3));
+        qScene2 = new Scene(p2);
+
+        //QuestionScene 3
+        Question q3 = sointuvisaService.getQuestionById(3);
+        VBox p3 = addQuestiontemplate(q3);
+        Button next3 = new Button("Seuraava");
+        p3.getChildren().add(next3);
+        next3.setOnAction(e -> primaryStage.setScene(qScene4));
+        qScene3 = new Scene(p3);
+        
+        //QuestionScene 4
+        Question q4 = sointuvisaService.getQuestionById(4);
+        VBox p4 = addQuestiontemplate(q4);
+        Button next4 = new Button("Seuraava");
+        p4.getChildren().add(next4);
+        next4.setOnAction(e -> {
+            primaryStage.setScene(qScene5);
+            
+                });
+        qScene4 = new Scene(p4);
+        
+        //QuestionScene 5
+        Question q5 = sointuvisaService.getQuestionById(5);
+        VBox p5 = addQuestiontemplate(q4);
+        Button next5 = new Button("Seuraava");
+        p5.getChildren().add(next5);
+        next5.setOnAction(e -> primaryStage.setScene(qScene6));
+        qScene5 = new Scene(p5);
+
+        primaryStage.setTitle("Sointuvisa");
+        primaryStage.setScene(usernameInputScene);
+        primaryStage.show();
+
+    }
+
+    public VBox addQuestiontemplate(Question q) {
+        Text text = header();
+        
+        Text questionNumberText = new Text();
+        questionNumberText.setFont(Font.font("verdana", FontPosture.REGULAR, 13));
+        questionNumberText.setText("Sointu numero " + q.getId());
         //Kuuntelunapin luonti
-        Button play1 = new Button("Kuuntele");        
+        Button play1 = new Button("Kuuntele");
         //Radiopainikkeiden käsittely
         final ToggleGroup group = new ToggleGroup();
         Label l = new Label("Valitse oikea sointutyyppi: ");
         Label chosen = new Label("Valintasi: ");
-
         RadioButton rb1 = new RadioButton("Duuri");
-        rb1.setToggleGroup(group);
-
         RadioButton rb2 = new RadioButton("Molli");
-        rb2.setToggleGroup(group);
         RadioButton rb3 = new RadioButton("Vähennetty");
-        rb3.setToggleGroup(group);
         RadioButton rb4 = new RadioButton("Ylinouseva");
+        rb1.setToggleGroup(group);
+        rb2.setToggleGroup(group);
+        rb3.setToggleGroup(group);
         rb4.setToggleGroup(group);
-        Button next = new Button("Seuraava");
+
         VBox pane = new VBox(8);
         pane.setAlignment(Pos.CENTER_LEFT);
         pane.setPadding(new Insets(10, 10, 10, 10));
         pane.getChildren().add(text);
+        pane.getChildren().add(questionNumberText);
         pane.getChildren().add(play1);
         pane.getChildren().add(l);
         pane.getChildren().add(rb1);
@@ -139,40 +196,6 @@ public class sointuvisaUi extends Application {
         pane.getChildren().add(rb3);
         pane.getChildren().add(rb4);
         pane.getChildren().add(chosen);
-        pane.getChildren().add(next);
-
-        questionScene = new Scene(pane);
-        
-        //Toisen scenen testaus
-        Label label2 = new Label("This is the second scene");
-        Button button2 = new Button("Go to scene 1");
-        button2.setOnAction(e -> primaryStage.setScene(questionScene));
-        VBox layout2 = new VBox(20);
-        layout2.getChildren().addAll(label2, button2);
-        scene2 = new Scene(layout2, 300, 250);
-
-        //Audiofailin käsittely
-        String path1 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-major-1.aif";
-        String path2 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-major-2.aif";
-        String path3 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-major-3.aif";
-        String path4 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-major-4.aif";
-        String path5 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-minor-1.aif";
-        String path6 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-minor-2.aif";
-        String path7 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-minor-3.aif";
-        String path8 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-diminished-1.aif";
-        String path9 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-diminished-2.aif";
-        String path10 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-diminished-3.aif";
-        String path11 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-1.aif";
-        String path12 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-2.aif";
-        String path13 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-3.aif";
-        
-        Media media1 = new Media(new File(q.getAudio_url()).toURI().toString());
-        Media media2 = new Media(new File(path2).toURI().toString());
-        MediaPlayer mediaPlayer1 = new MediaPlayer(media1);
-        play1.setOnAction(e -> {
-            mediaPlayer1.seek(mediaPlayer1.getStartTime());
-            mediaPlayer1.play();
-        });
 
         //listenerin toiminta
         group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
@@ -187,13 +210,24 @@ public class sointuvisaUi extends Application {
                 }
             }
         });
+        Media media1 = new Media(new File(q.getAudio_url()).toURI().toString());
+        MediaPlayer mediaPlayer1 = new MediaPlayer(media1);
+        play1.setOnAction(e -> {
+            mediaPlayer1.seek(mediaPlayer1.getStartTime());
+            mediaPlayer1.play();
+        });
 
+        return pane;
+    }
+    
+    public Text header() {
+        Text text = new Text();
+        text.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
+        text.setText("Sointuvisa");
+        text.setX(50);
+        text.setY(50);
         
-        next.setOnAction(e -> primaryStage.setScene(scene2));
-        primaryStage.setTitle("Sointuvisa");
-        primaryStage.setScene(usernameInputScene);
-        primaryStage.show();
-
+        return text;
     }
 
     public static void main(String[] args) {

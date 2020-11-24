@@ -6,11 +6,13 @@
 package sointuvisa.dao;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import sointuvisa.domain.Question;
 import sointuvisa.domain.User;
 
 /**
@@ -54,11 +56,31 @@ public class FileUserDao implements userDao{
         save();
         return user;
     }
+    @Override
+    public User findUserByName(String username) throws FileNotFoundException {
+
+        Scanner reader = new Scanner(new File(file));
+        StringBuilder name = new StringBuilder();
+        int points = 0;
+        
+        while (reader.hasNextLine()) {
+            String line = reader.nextLine();
+            String[] palat = line.split(";");            
+            if (palat[0].equals(username)) {
+                name.append(palat[0]);
+                points=Integer.valueOf(palat[1]);
+                break;
+            }
+        }
+        User user = new User(name.toString());    
+        user.setPoints(points);
+        return user;
+    }
 
     private void save() throws Exception {
         try (FileWriter writer = new FileWriter(new File(file))) {
             for (User user : users) {
-                writer.write(user.getUsername()+"\n");
+                writer.write(user.getUsername()+";"+user.getPoints()+"\n");
             }
         } 
     }

@@ -84,8 +84,7 @@ public class FileQuestionDao implements questionDao {
         
         while (reader.hasNextLine()) {
             String line = reader.nextLine();
-            String[] palat = line.split(";");
-            System.out.println(line);
+            String[] palat = line.split(";");            
             if (palat[0].equals(Integer.toString(id))) {
                 url.append(palat[1]);
                 type.append(palat[2]);

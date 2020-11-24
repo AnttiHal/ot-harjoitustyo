@@ -15,5 +15,7 @@ public interface userDao {
     
     User create(User user) throws Exception;
     
+    User findUserByName(String username) throws Exception;
+    
     
 }

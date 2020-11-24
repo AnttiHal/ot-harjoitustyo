@@ -46,11 +46,8 @@ public class SointuvisaService {
         return true;
     }
     
-    public Question getQuestionById (int id) throws Exception {
-        
-        
-        Question q= questionDao.findQuestionById(id);
-        
+    public Question getQuestionById (int id) throws Exception {        
+        Question q= questionDao.findQuestionById(id);        
         return q;
     }
     
