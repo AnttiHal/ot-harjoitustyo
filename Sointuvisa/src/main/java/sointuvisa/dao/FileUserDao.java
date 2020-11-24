@@ -58,7 +58,7 @@ public class FileUserDao implements userDao{
     }
     @Override
     public User findUserByName(String username) throws FileNotFoundException {
-
+        /*
         Scanner reader = new Scanner(new File(file));
         StringBuilder name = new StringBuilder();
         int points = 0;
@@ -74,7 +74,12 @@ public class FileUserDao implements userDao{
         }
         User user = new User(name.toString());    
         user.setPoints(points);
-        return user;
+        */
+        return users.stream()
+            .filter(u->u.getUsername()
+            .equals(username))
+            .findFirst()
+            .orElse(null);
     }
 
     private void save() throws Exception {

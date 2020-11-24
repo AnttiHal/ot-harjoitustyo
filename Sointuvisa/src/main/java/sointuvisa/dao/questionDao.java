@@ -10,11 +10,11 @@ import sointuvisa.domain.Question;
 /**
  *
  * @author anttihalmetoja
- * 
+ *
  */
 public interface questionDao {
-    
+
     Question create(Question question) throws Exception;
-    
+
     Question findQuestionById(int id) throws Exception;
 }

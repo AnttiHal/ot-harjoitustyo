@@ -12,10 +12,10 @@ import sointuvisa.dao.userDao;
 
 /**
  *
- * @author anttihalmetoja
- * Sovelluslogiikasta vastaava luokka 
+ * @author anttihalmetoja Sovelluslogiikasta vastaava luokka
  */
 public class SointuvisaService {
+
     private questionDao questionDao;
     private userDao userDao;
     private User user;
@@ -24,20 +24,19 @@ public class SointuvisaService {
         this.questionDao = questionDao;
         this.userDao = userDao;
     }
-    
+
     /**
-    * kirjautuneena oleva käyttäjä
-    * 
-    * @return kirjautuneena oleva käyttäjä 
-    */   
-    
+     * kirjautuneena oleva käyttäjä
+     *
+     * @return kirjautuneena oleva käyttäjä
+     */
     public User getUser() {
         return user;
     }
-    
+
     public Boolean createUser(String username) {
-        
-        User user= new User(username);
+
+        User user = new User(username);
         try {
             userDao.create(user);
         } catch (Exception e) {
@@ -45,17 +44,15 @@ public class SointuvisaService {
         }
         return true;
     }
-    
-    public Question getQuestionById (int id) throws Exception {        
-        Question q= questionDao.findQuestionById(id);        
+
+    public Question getQuestionById(int id) throws Exception {
+        Question q = questionDao.findQuestionById(id);
         return q;
     }
-    
-    public User getUserByUsername (String name) throws Exception{
+
+    public User getUserByUsername(String name) throws Exception {
         User u = userDao.findUserByName(name);
         return u;
     }
-    
-    
-    
+
 }

@@ -48,6 +48,7 @@ import sointuvisa.domain.User;
  * @author anttihalmetoja
  */
 public class sointuvisaUi extends Application {
+
     private ToggleGroup group = new ToggleGroup();
     private SointuvisaService sointuvisaService;
     private TextField usernameInput;
@@ -73,9 +74,7 @@ public class sointuvisaUi extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        
-        
-        
+
         //usernameInputScene
         Text header = header();
         VBox usernameInputPane = new VBox(10);
@@ -112,8 +111,6 @@ public class sointuvisaUi extends Application {
         startPane.getChildren().add(startButton);
         startScene = new Scene(startPane, 300, 200);
 
-        
-        
         //QuestionScene 1
         q1 = sointuvisaService.getQuestionById(1);
         VBox p1 = addQuestiontemplate(q1);
@@ -121,25 +118,24 @@ public class sointuvisaUi extends Application {
         p1.getChildren().add(next1);
         next1.setOnAction(e -> {
             primaryStage.setScene(qScene2);
-                RadioButton rb = (RadioButton) group.getSelectedToggle();
-                
-                if (rb != null) {
-                    String selected = rb.getText().toLowerCase();
-                    System.out.println(selected);
-                    if (q1.getChordType().equals(selected)) {
-                        try {
-                            User u = sointuvisaService.getUserByUsername(usernameInput.getText());
-                            u.setPoints(1);
-                            System.out.println(u.getPoints());
-                        } catch (Exception ex) {
-                            Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+            RadioButton rb = (RadioButton) group.getSelectedToggle();
+
+            if (rb != null) {
+                String selected = rb.getText().toLowerCase();
+                System.out.println(selected);
+                if (q1.getChordType().equals(selected)) {
+                    try {
+                        User u = sointuvisaService.getUserByUsername(usernameInput.getText());
+                        u.setPoints(1);
+                        System.out.println(u.getPoints());
+                    } catch (Exception ex) {
+                        Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                });
-        
+            }
+        });
+
         qScene1 = new Scene(p1);
-        
 
         //QuestionScene 2
         Question q2 = sointuvisaService.getQuestionById(2);
@@ -156,7 +152,7 @@ public class sointuvisaUi extends Application {
         p3.getChildren().add(next3);
         next3.setOnAction(e -> primaryStage.setScene(qScene4));
         qScene3 = new Scene(p3);
-        
+
         //QuestionScene 4
         Question q4 = sointuvisaService.getQuestionById(4);
         VBox p4 = addQuestiontemplate(q4);
@@ -165,9 +161,9 @@ public class sointuvisaUi extends Application {
         next4.setOnAction(e -> {
             primaryStage.setScene(qScene5);
             group.getSelectedToggle();
-                });
+        });
         qScene4 = new Scene(p4);
-        
+
         //QuestionScene 5
         Question q5 = sointuvisaService.getQuestionById(5);
         VBox p5 = addQuestiontemplate(q5);
@@ -184,14 +180,14 @@ public class sointuvisaUi extends Application {
 
     public VBox addQuestiontemplate(Question q) {
         Text text = header();
-        
+
         Text questionNumberText = new Text();
         questionNumberText.setFont(Font.font("verdana", FontPosture.REGULAR, 13));
         questionNumberText.setText("Sointu numero " + q.getId());
         //Kuuntelunapin luonti
         Button play1 = new Button("Kuuntele");
         //Radiopainikkeiden käsittely
-        
+
         Label l = new Label("Valitse oikea sointutyyppi: ");
         Label chosen = new Label("Valintasi: ");
         RadioButton rb1 = new RadioButton("Duuri");
@@ -238,14 +234,14 @@ public class sointuvisaUi extends Application {
 
         return pane;
     }
-    
+
     public Text header() {
         Text text = new Text();
         text.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
         text.setText("Sointuvisa");
         text.setX(50);
         text.setY(50);
-        
+
         return text;
     }
 
