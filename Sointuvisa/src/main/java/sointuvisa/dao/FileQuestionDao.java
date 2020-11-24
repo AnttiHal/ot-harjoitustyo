@@ -74,22 +74,25 @@ public class FileQuestionDao implements questionDao {
             }
         }
     }
-
+    
+    @Override
     public Question findQuestionById(int id) throws FileNotFoundException {
 
         Scanner reader = new Scanner(new File(file));
-        String url = "";
-        String type = "";
+        StringBuilder url = new StringBuilder();
+        StringBuilder type = new StringBuilder();
+        
         while (reader.hasNextLine()) {
             String line = reader.nextLine();
             String[] palat = line.split(";");
-            if (palat[0].equals(id)) {
-                url = palat[1];
-                type = palat[2];
+            System.out.println(line);
+            if (palat[0].equals(Integer.toString(id))) {
+                url.append(palat[1]);
+                type.append(palat[2]);
                 break;
             }
         }
-        Question question = new Question(id, url, type);
+        Question question = new Question(id, url.toString(), type.toString());        
         return question;
     }
 

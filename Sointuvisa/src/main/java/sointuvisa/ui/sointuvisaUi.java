@@ -37,6 +37,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import sointuvisa.dao.FileQuestionDao;
 import sointuvisa.dao.FileUserDao;
+import sointuvisa.domain.Question;
 import sointuvisa.domain.SointuvisaService;
 
 /**
@@ -45,6 +46,7 @@ import sointuvisa.domain.SointuvisaService;
  */
 public class sointuvisaUi extends Application {
     private SointuvisaService sointuvisaService;
+    private TextField usernameInput;
     Scene usernameInputScene, startScene, questionScene, scene2;
     
     @Override
@@ -70,7 +72,7 @@ public class sointuvisaUi extends Application {
         
         usernameInputPane.setPadding(new Insets(10));
         Label loginLabel = new Label("käyttäjätunnus");
-        TextField usernameInput = new TextField();
+         usernameInput = new TextField();
         
         Button okButton = new Button("OK");                
         Label loginMessage = new Label();
@@ -79,24 +81,38 @@ public class sointuvisaUi extends Application {
             String username = usernameInput.getText();
             sointuvisaService.createUser(username);
             usernameInput.setText("");
-            primaryStage.setScene(questionScene);   
+            primaryStage.setScene(startScene);   
         });  
         usernameInputPane.getChildren().addAll(loginMessage, loginLabel, usernameInput, okButton);
         usernameInputScene = new Scene(usernameInputPane,300,250);
         
+        //Start scene
+        VBox startPane = new VBox(10);
+        Text welcomeText = new Text();
+        welcomeText.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         
-        //Creating a Text object 
+        welcomeText.setText("Tervetuloa opettelemaan \nsointujen tunnistusta!\n\n");
+        welcomeText.setX(50);
+        welcomeText.setY(50);
+        Button startButton = new Button("Aloita");
+        startButton.setOnAction(e->{
+            
+            primaryStage.setScene(questionScene);   
+        });  
+        startPane.getChildren().add(welcomeText);
+        startPane.getChildren().add(startButton);
+        startScene = new Scene(startPane, 300, 200);
+        
+        //QuestionScene 
+        Question q= sointuvisaService.getQuestionById(1);
+                
         Text text = new Text();
         text.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
-        //Setting the text to be added. 
         text.setText("Sointuvisa");
-
-        //setting the position of the text 
         text.setX(50);
         text.setY(50);
         //Kuuntelunapin luonti
-        Button play1 = new Button("Kuuntele");
-
+        Button play1 = new Button("Kuuntele");        
         //Radiopainikkeiden käsittely
         final ToggleGroup group = new ToggleGroup();
         Label l = new Label("Valitse oikea sointutyyppi: ");
@@ -150,7 +166,7 @@ public class sointuvisaUi extends Application {
         String path12 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-2.aif";
         String path13 = "src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-3.aif";
         
-        Media media1 = new Media(new File(path1).toURI().toString());
+        Media media1 = new Media(new File(q.getAudio_url()).toURI().toString());
         Media media2 = new Media(new File(path2).toURI().toString());
         MediaPlayer mediaPlayer1 = new MediaPlayer(media1);
         play1.setOnAction(e -> {
