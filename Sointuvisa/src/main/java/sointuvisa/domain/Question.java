@@ -7,10 +7,10 @@ package sointuvisa.domain;
 
 /**
  *
- * @author anttihalmetoja
- * sointuvisan yksittäistä kysymystä kuvaava luokka
+ * @author anttihalmetoja sointuvisan yksittäistä kysymystä kuvaava luokka
  */
 public class Question {
+
     private int id;
     private String question;
     private String audio_url;
@@ -26,13 +26,13 @@ public class Question {
     public String getAudio_url() {
         return audio_url;
     }
-    
+
     public int getId() {
         return this.id;
     }
-    
+
     public String getChordType() {
         return this.chordType;
     }
-    
+
 }

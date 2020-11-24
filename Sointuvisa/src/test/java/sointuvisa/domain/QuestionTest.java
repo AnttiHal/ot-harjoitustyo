@@ -24,7 +24,7 @@ public void returnsCorrectAudioUrlAndChordType() {
         Question q = new Question(1, "src/main/java/sointuvisa/audiofiles/kolmisoinnut-major-1.aif", "duuri");
         
         
-        assertEquals(q.getAudio_url(),"src/main/java/sointuvisa/audiofiles/kolmisoinnut-major-1.aif");
+        assertEquals(q.getAudioUrl(),"src/main/java/sointuvisa/audiofiles/kolmisoinnut-major-1.aif");
         assertEquals(q.getChordType(),"duuri");
     }
 }

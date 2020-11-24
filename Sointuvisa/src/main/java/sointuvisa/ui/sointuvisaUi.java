@@ -225,7 +225,7 @@ public class sointuvisaUi extends Application {
                 }
             }
         });
-        Media media1 = new Media(new File(q.getAudio_url()).toURI().toString());
+        Media media1 = new Media(new File(q.getAudioUrl()).toURI().toString());
         MediaPlayer mediaPlayer1 = new MediaPlayer(media1);
         play1.setOnAction(e -> {
             mediaPlayer1.seek(mediaPlayer1.getStartTime());

@@ -19,7 +19,7 @@ import sointuvisa.domain.User;
  *
  * @author anttihalmetoja
  */
-public class FileUserDao implements userDao{
+public class FileUserDao implements userDao {
 
     private ArrayList<User> users;
     private String file;
@@ -27,7 +27,7 @@ public class FileUserDao implements userDao{
     public FileUserDao(String file) throws IOException {
         this.users = new ArrayList<>();
         this.file = file;
-        
+
         try {
             Scanner reader = new Scanner(new File(file));
             while (reader.hasNextLine()) {
@@ -35,12 +35,13 @@ public class FileUserDao implements userDao{
                 User u = new User(name);
                 users.add(u);
             }
-            
-        } catch (Exception e){
+
+        } catch (Exception e) {
             FileWriter writer = new FileWriter(new File(file));
             writer.close();
         }
     }
+
     /*
     public User findUserByUsername(String user) {
         
@@ -48,47 +49,30 @@ public class FileUserDao implements userDao{
         
         return ;
     }
-    */
-    
+     */
+
     @Override
     public User create(User user) throws Exception {
         users.add(user);
         save();
         return user;
     }
+
     @Override
     public User findUserByName(String username) throws FileNotFoundException {
-        /*
-        Scanner reader = new Scanner(new File(file));
-        StringBuilder name = new StringBuilder();
-        int points = 0;
         
-        while (reader.hasNextLine()) {
-            String line = reader.nextLine();
-            String[] palat = line.split(";");            
-            if (palat[0].equals(username)) {
-                name.append(palat[0]);
-                points=Integer.valueOf(palat[1]);
-                break;
-            }
-        }
-        User user = new User(name.toString());    
-        user.setPoints(points);
-        */
         return users.stream()
-            .filter(u->u.getUsername()
-            .equals(username))
-            .findFirst()
-            .orElse(null);
+                .filter(u -> u.getUsername()
+                .equals(username))
+                .findFirst()
+                .orElse(null);
     }
 
     private void save() throws Exception {
         try (FileWriter writer = new FileWriter(new File(file))) {
             for (User user : users) {
-                writer.write(user.getUsername()+";"+user.getPoints()+"\n");
+                writer.write(user.getUsername() + ";" + user.getPoints() + "\n");
             }
-        } 
+        }
     }
-    }
-    
-
+}

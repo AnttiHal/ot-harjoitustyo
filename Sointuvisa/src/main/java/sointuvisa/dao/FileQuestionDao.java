@@ -67,9 +67,9 @@ public class FileQuestionDao implements questionDao {
     }
 
     private void save() throws Exception {
-        try ( FileWriter writer = new FileWriter(new File(file))) {
+        try (FileWriter writer = new FileWriter(new File(file))) {
             for (Question question : questions) {
-                writer.write(question.getId() + ";" + question.getAudio_url() + ";" + question.getChordType() + "\n");
+                writer.write(question.getId() + ";" + question.getAudioUrl() + ";" + question.getChordType() + "\n");
 
             }
         }
