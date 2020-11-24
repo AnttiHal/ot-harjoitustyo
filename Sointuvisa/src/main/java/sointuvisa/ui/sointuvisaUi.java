@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -39,18 +41,20 @@ import sointuvisa.dao.FileQuestionDao;
 import sointuvisa.dao.FileUserDao;
 import sointuvisa.domain.Question;
 import sointuvisa.domain.SointuvisaService;
+import sointuvisa.domain.User;
 
 /**
  *
  * @author anttihalmetoja
  */
 public class sointuvisaUi extends Application {
-
+    private ToggleGroup group = new ToggleGroup();
     private SointuvisaService sointuvisaService;
     private TextField usernameInput;
     Scene usernameInputScene, startScene, qScene1,
             qScene2, qScene3, qScene4, qScene5, qScene6, qScene7, qScene8,
             qScene9, qScene10, scene2;
+    Question q1;
 
     @Override
     public void init() throws IOException, Exception {
@@ -111,16 +115,31 @@ public class sointuvisaUi extends Application {
         
         
         //QuestionScene 1
-        Question q1 = sointuvisaService.getQuestionById(1);
+        q1 = sointuvisaService.getQuestionById(1);
         VBox p1 = addQuestiontemplate(q1);
         Button next1 = new Button("Seuraava");
         p1.getChildren().add(next1);
         next1.setOnAction(e -> {
             primaryStage.setScene(qScene2);
-            
+                RadioButton rb = (RadioButton) group.getSelectedToggle();
+                
+                if (rb != null) {
+                    String selected = rb.getText().toLowerCase();
+                    System.out.println(selected);
+                    if (q1.getChordType().equals(selected)) {
+                        try {
+                            User u = sointuvisaService.getUserByUsername(usernameInput.getText());
+                            u.setPoints(1);
+                            System.out.println(u.getPoints());
+                        } catch (Exception ex) {
+                            Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }
                 });
+        
         qScene1 = new Scene(p1);
-        p1.getChildren().get(3)
+        
 
         //QuestionScene 2
         Question q2 = sointuvisaService.getQuestionById(2);
@@ -145,13 +164,13 @@ public class sointuvisaUi extends Application {
         p4.getChildren().add(next4);
         next4.setOnAction(e -> {
             primaryStage.setScene(qScene5);
-            
+            group.getSelectedToggle();
                 });
         qScene4 = new Scene(p4);
         
         //QuestionScene 5
         Question q5 = sointuvisaService.getQuestionById(5);
-        VBox p5 = addQuestiontemplate(q4);
+        VBox p5 = addQuestiontemplate(q5);
         Button next5 = new Button("Seuraava");
         p5.getChildren().add(next5);
         next5.setOnAction(e -> primaryStage.setScene(qScene6));
@@ -172,7 +191,7 @@ public class sointuvisaUi extends Application {
         //Kuuntelunapin luonti
         Button play1 = new Button("Kuuntele");
         //Radiopainikkeiden käsittely
-        final ToggleGroup group = new ToggleGroup();
+        
         Label l = new Label("Valitse oikea sointutyyppi: ");
         Label chosen = new Label("Valintasi: ");
         RadioButton rb1 = new RadioButton("Duuri");

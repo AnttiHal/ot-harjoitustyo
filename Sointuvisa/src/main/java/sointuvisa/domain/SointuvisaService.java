@@ -51,5 +51,11 @@ public class SointuvisaService {
         return q;
     }
     
+    public User getUserByUsername (String name) throws Exception{
+        User u = userDao.findUserByName(name);
+        return u;
+    }
+    
+    
     
 }
