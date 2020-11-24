@@ -6,4 +6,6 @@
 |4.11.  | 1    |Tuntikirjanpidon lisääminen, vaatimusmäärittelyn täsmentäminen|
 |16.11.  | 6    |Sovelluksen rakenteen toteutus, javafx testailua|
 |17.11.  | 5    |Sovelluksen rakenteen toteutusta, tiedon tallennuksen toteutusta|
-| yht   | 14   | |
+|23.11.  | 1    |testien tekoa, sovelluksen rakennusta|
+|24.11.  | 8    |Checkstyle, testaus, rakenteen suunnittelu, arkkitehtuuri.md|
+| yht   | 23   | |
