@@ -2,11 +2,11 @@
 
 ## Sovelluksen tarkoitus
 
-Sovelluksen avulla harjoitellaan tunnistamaan erilaisia sointutyyppejä. Sovellus on peli, jossa pelaaja valitsee oikean sointutyypin annetuista vaihtoehdoista kuulemansa soinnun perusteella. Suorituksesta saa pisteitä ja parhaiten suoriutuneiden pisteet on näkyvillä High score -listauksessa.
+Sovelluksen avulla harjoitellaan tunnistamaan erilaisia sointutyyppejä. Sovellus on peli, jossa pelaaja valitsee oikean sointutyypin annetuista vaihtoehdoista kuulemansa soinnun perusteella. Suorituksesta saa pisteitä ja parhaiten suoriutuneiden pisteet on näkyvillä High score -listauksessa. Tiedot pelaajista, pisteistä ja kysymyksistä tallennetaan tiedostoon.
 
 ## Käyttäjät
 
-Sovelluksella on ainostaan peruskäyttäjiä, jotka voivat kirjautua ja tehdä harjoituksia.
+Sovelluksella on ainostaan peruskäyttäjiä, jotka voivat antaa käyttäjänimen ja tehdä harjoituksia.
 
 ## Käyttöliittymäluonnos
 
@@ -23,11 +23,11 @@ Sovelluksella on ainostaan peruskäyttäjiä, jotka voivat kirjautua ja tehdä h
 - Linkki High score -näkymään
 
 ### Pelin aloitus
-- Avautuu pelin avausnäkymä jossa annettu pelaajalle tekstimuodossa ohjeet pelaamiseen sekä nappi "käynnistä", josta peli käynnistyy
+- Avautuu pelin avausnäkymä jossa annettu pelaajalle tekstimuodossa ohjeet pelaamiseen sekä nappi "käynnistä", josta peli käynnistyy (tästä puuttuu ohje, muuten ok)
 - Peli toistaa käyttäjälle yhden audiotiedoston kerrallaan (yht 10 kpl) ja pelaajan on tunnistettava kyseessä olevan kolmisoinnun tyyppi
-  - Sointutyypit: Duuri, molli, vähennetty, ylinouseva 
+  - Sointutyypit: Duuri, molli, vähennetty, ylinouseva (Lisätty viisi eri kysymystä, ensimmäinen vasta tallennetaan)
   
-### Pelatun kierroksen jälkeen
+### Pelatun kierroksen jälkeen (Tämä vielä toteuttamatta)
 
 - pelaaja saa eteensä tulosnäkymän, jossa näkyy mitkä soinnut menivät oikein ja mitkä väärin
 - pelaaja saa tiedon pääsikö high score -listalle.
