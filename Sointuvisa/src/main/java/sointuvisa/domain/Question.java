@@ -13,18 +13,18 @@ public class Question {
 
     private int id;
     private String question;
-    private String audio_url;
+    private String audioUrl;
     private String chordType;
 
-    public Question(int id, String audio_url, String chordType) {
+    public Question(int id, String audioUrl, String chordType) {
         this.id = id;
         this.question = "Mikä sointu?";
-        this.audio_url = audio_url;
+        this.audioUrl = audioUrl;
         this.chordType = chordType;
     }
 
-    public String getAudio_url() {
-        return audio_url;
+    public String getAudioUrl() {
+        return audioUrl;
     }
 
     public int getId() {
