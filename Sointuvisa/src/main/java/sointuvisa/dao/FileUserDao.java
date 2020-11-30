@@ -41,16 +41,6 @@ public class FileUserDao implements userDao {
             writer.close();
         }
     }
-
-    /*
-    public User findUserByUsername(String user) {
-        
-        for ()
-        
-        return ;
-    }
-     */
-
     @Override
     public User create(User user) throws Exception {
         users.add(user);
