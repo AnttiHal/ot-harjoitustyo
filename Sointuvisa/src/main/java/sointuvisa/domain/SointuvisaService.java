@@ -6,9 +6,11 @@
  */
 package sointuvisa.domain;
 
+import java.util.ArrayList;
 import sointuvisa.dao.userDao;
 import sointuvisa.dao.questionDao;
 import sointuvisa.dao.userDao;
+
 
 /**
  *
@@ -36,9 +38,10 @@ public class SointuvisaService {
 
     public Boolean createUser(String username) {
 
-        User user = new User(username);
+        User u = new User(username);
+        user=u;
         try {
-            userDao.create(user);
+            userDao.create(u);
         } catch (Exception e) {
             return false;
         }
@@ -53,6 +56,21 @@ public class SointuvisaService {
     public User getUserByUsername(String name) throws Exception {
         User u = userDao.findUserByName(name);
         return u;
+    }
+    
+    public User updateUserPoints(User user) throws Exception{
+        userDao.updatePoints(user);
+        return user;
+    }
+    
+    public int getUserPoints(User user) throws Exception{
+        int points = userDao.getUserPoints(user);
+        return points;
+    }
+    
+    public ArrayList<User> getTopThree() throws Exception {
+        ArrayList<User> best = userDao.getTopThree();
+        return best;
     }
 
 }

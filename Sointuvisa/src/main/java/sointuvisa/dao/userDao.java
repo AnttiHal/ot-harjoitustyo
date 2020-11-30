@@ -5,6 +5,7 @@
  */
 package sointuvisa.dao;
 
+import java.util.ArrayList;
 import sointuvisa.domain.User;
 
 /**
@@ -16,5 +17,13 @@ public interface userDao {
     User create(User user) throws Exception;
 
     User findUserByName(String username) throws Exception;
+    
+    User updatePoints (User user) throws Exception;
+    
+    ArrayList<User> getTopThree () throws Exception;
+    
+    int getUserPoints(User user) throws Exception;
+        
+    
 
 }

@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 import sointuvisa.domain.Question;
 
@@ -42,9 +43,12 @@ public class FileQuestionDao implements questionDao {
             this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-1.aif");
             this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-2.aif");
             this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-3.aif");
-
+            
+            Random r = new Random();
+            
+            
             for (int i = 1; i < 14; i++) {
-                String audio_url = this.audioUrls.get(i - 1);
+                String audio_url = this.audioUrls.get(r.nextInt(12));
                 String type = "";
                 if (audio_url.contains("minor")) {
                     type = "molli";
@@ -56,7 +60,7 @@ public class FileQuestionDao implements questionDao {
                     type = "vähennetty";
                 }
 
-                Question question = new Question(i, this.audioUrls.get(i - 1), type);
+                Question question = new Question(i, audio_url, type);
                 questions.add(question);
                 save();
             }
