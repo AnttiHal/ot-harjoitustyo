@@ -212,7 +212,8 @@ public class sointuvisaUi extends Application {
         
         
         
-        endText.setText("Sait " + getUserPoints()+"/10 pistettä!");
+        
+        
         endText.setX(50);
         endText.setY(50);
         Button playAgain = new Button("Pelaa uudestaan");
