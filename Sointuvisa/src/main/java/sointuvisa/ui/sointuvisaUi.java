@@ -15,6 +15,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
@@ -55,10 +56,10 @@ public class sointuvisaUi extends Application {
     private TextField usernameInput;
     Scene usernameInputScene, startScene, HSScene, qScene1,
             qScene2, qScene3, qScene4, qScene5, qScene6, qScene7, qScene8,
-            qScene9, qScene10, endScene ;
+            qScene9, qScene10, endScene;
     Question q1;
     User user;
-    
+    int points;
 
     @Override
     public void init() throws IOException, Exception {
@@ -92,7 +93,7 @@ public class sointuvisaUi extends Application {
         Label message = new Label();
         okButton.setOnAction(e -> {
 
-             String username = usernameInput.getText();
+            String username = usernameInput.getText();
             if (username.length() < 3) {
                 message.setText("Käyttäjänimen tulee olla \nvähintään kolme merkkiä pitkä");
             } else {
@@ -132,17 +133,19 @@ public class sointuvisaUi extends Application {
         //Highscore scene
         VBox HSPane = new VBox(10);
         ArrayList<User> theBest = sointuvisaService.getTopThree();
+        Text tulokset = new Text();
         Text yksi = new Text();
         Text kaksi = new Text();
         Text kolme = new Text();
         yksi.setText("1. " + theBest.get(0).getUsername() + ", " + theBest.get(0).getPoints() + " pistettä");
         kaksi.setText("2. " + theBest.get(1).getUsername() + ", " + theBest.get(1).getPoints() + " pistettä");
         kolme.setText("3. " + theBest.get(2).getUsername() + ", " + theBest.get(2).getPoints() + " pistettä");
+        tulokset.setText("Tarkkakorvaisimmat pelaajat");
         Button backButton = new Button("Palaa alkuun");
         backButton.setOnAction(e -> {
             primaryStage.setScene(usernameInputScene);
         });
-        HSPane.getChildren().addAll(header(), yksi, kaksi, kolme, backButton);
+        HSPane.getChildren().addAll(header(), tulokset, yksi, kaksi, kolme, backButton);
         HSScene = new Scene(HSPane, 300, 200);
 
         //QuestionScene 1
@@ -160,7 +163,7 @@ public class sointuvisaUi extends Application {
         Question q2 = sointuvisaService.getQuestionById(2);
         VBox p2 = addQuestiontemplate(q2);
         Button next2 = new Button("Seuraava");
-        p2.getChildren().addAll(header(), next2);
+        p2.getChildren().addAll(next2);
         next2.setOnAction(e -> {
             primaryStage.setScene(qScene3);
             checkAnswerAndRaisePointsIfCorrect(q2);
@@ -171,7 +174,7 @@ public class sointuvisaUi extends Application {
         Question q3 = sointuvisaService.getQuestionById(3);
         VBox p3 = addQuestiontemplate(q3);
         Button next3 = new Button("Seuraava");
-        p3.getChildren().addAll(header(), next3);
+        p3.getChildren().addAll(next3);
         next3.setOnAction(e -> {
             primaryStage.setScene(qScene4);
             checkAnswerAndRaisePointsIfCorrect(q3);
@@ -182,7 +185,7 @@ public class sointuvisaUi extends Application {
         Question q4 = sointuvisaService.getQuestionById(4);
         VBox p4 = addQuestiontemplate(q4);
         Button next4 = new Button("Seuraava");
-        p4.getChildren().addAll(header(), next4);
+        p4.getChildren().addAll(next4);
         next4.setOnAction(e -> {
             primaryStage.setScene(qScene5);
             checkAnswerAndRaisePointsIfCorrect(q4);
@@ -193,48 +196,115 @@ public class sointuvisaUi extends Application {
         Question q5 = sointuvisaService.getQuestionById(5);
         VBox p5 = addQuestiontemplate(q5);
         Button next5 = new Button("Seuraava");
-        p5.getChildren().addAll(header(), next5);
+        p5.getChildren().addAll(next5);
         next5.setOnAction(e -> {
             primaryStage.setScene(qScene6);
             checkAnswerAndRaisePointsIfCorrect(q5);
         });
         qScene5 = new Scene(p5);
 
-        primaryStage.setTitle("Sointuvisa");
-        primaryStage.setScene(usernameInputScene);
-        primaryStage.show();
-        
-        
+        //QuestionScene 6
+        Question q6 = sointuvisaService.getQuestionById(6);
+        VBox p6 = addQuestiontemplate(q6);
+        Button next6 = new Button("Seuraava");
+        p6.getChildren().addAll(next6);
+        next6.setOnAction(e -> {
+            primaryStage.setScene(qScene7);
+            checkAnswerAndRaisePointsIfCorrect(q6);
+        });
+        qScene6 = new Scene(p6);
+
+        //QuestionScene 7
+        Question q7 = sointuvisaService.getQuestionById(7);
+        VBox p7 = addQuestiontemplate(q7);
+        Button next7 = new Button("Seuraava");
+        p7.getChildren().addAll(next7);
+        next7.setOnAction(e -> {
+            primaryStage.setScene(qScene8);
+            checkAnswerAndRaisePointsIfCorrect(q7);
+        });
+        qScene7 = new Scene(p7);
+
+        //QuestionScene 8
+        Question q8 = sointuvisaService.getQuestionById(8);
+        VBox p8 = addQuestiontemplate(q8);
+        Button next8 = new Button("Seuraava");
+        p8.getChildren().addAll(next8);
+        next8.setOnAction(e -> {
+            primaryStage.setScene(qScene9);
+            checkAnswerAndRaisePointsIfCorrect(q8);
+        });
+        qScene8 = new Scene(p8);
+
+        //QuestionScene 9
+        Question q9 = sointuvisaService.getQuestionById(9);
+        VBox p9 = addQuestiontemplate(q9);
+        Button next9 = new Button("Seuraava");
+        p9.getChildren().addAll(next9);
+        next9.setOnAction(e -> {
+            primaryStage.setScene(qScene10);
+            checkAnswerAndRaisePointsIfCorrect(q9);
+        });
+        qScene9 = new Scene(p9);
+
+        //QuestionScene 10
+        Question q10 = sointuvisaService.getQuestionById(10);
+        VBox p10 = addQuestiontemplate(q10);
+        Button next10 = new Button("katso tulokset");
+        p10.getChildren().addAll(next10);
+        next10.setOnAction(e -> {
+            primaryStage.setScene(endScene);
+
+            checkAnswerAndRaisePointsIfCorrect(q10);
+            try {
+                points = getUserPoints();
+                System.out.println("pisteet: " + points);
+            } catch (Exception ex) {
+                Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
+        qScene10 = new Scene(p10);
+
         //EndScene
-         VBox endPane = new VBox(10);
+        VBox endPane = new VBox(10);
         Text endText = new Text();
         endText.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
-        
-        
-        
-        
-        
+        endText.setText("Sait " + points + "/10 pistettä!");
+        endText.textProperty().addListener(
+                (observable, oldvalue, newvalue) -> {
+                    System.out.println("Sait "+ newvalue + "/10 pistettä");
+                }
+        // code goes here
+        );
         endText.setX(50);
         endText.setY(50);
         Button playAgain = new Button("Pelaa uudestaan");
         Button quit = new Button("Lopeta");
+        playAgain.setOnAction(e -> {
+            primaryStage.setScene(startScene);
+
+        });
+        quit.setOnAction(e -> {
+            Platform.exit();
+        });
         endPane.getChildren().addAll(header(), endText, playAgain, quit);
         endScene = new Scene(endPane, 300, 200);
-        
-        }
-        
-    public int getUserPoints () {
-        int points =0;
+
+        primaryStage.setTitle("Sointuvisa");
+        primaryStage.setScene(usernameInputScene);
+        primaryStage.show();
+    }
+
+    public int getUserPoints() {
+        int points = 0;
         try {
-                    points = sointuvisaService.getUserPoints(user);
-                } catch (Exception ex) {
-                    Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            points = sointuvisaService.getUserPoints(user);
+        } catch (Exception ex) {
+            Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return points;
     }
-        
-             
-        
 
     public void checkAnswerAndRaisePointsIfCorrect(Question q) {
         RadioButton rb = (RadioButton) group.getSelectedToggle();
