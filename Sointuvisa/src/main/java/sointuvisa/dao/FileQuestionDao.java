@@ -18,7 +18,7 @@ import sointuvisa.domain.Question;
  *
  * @author anttihalmetoja
  */
-public class FileQuestionDao implements questionDao {
+public class FileQuestionDao implements QuestionDao {
 
     public ArrayList<Question> questions;
     private String file;
@@ -43,24 +43,23 @@ public class FileQuestionDao implements questionDao {
             this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-1.aif");
             this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-2.aif");
             this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-3.aif");
-            
+
             Random r = new Random();
-            
-            
+
             for (int i = 1; i < 14; i++) {
-                String audio_url = this.audioUrls.get(r.nextInt(12));
+                String audioUrl = this.audioUrls.get(r.nextInt(12));
                 String type = "";
-                if (audio_url.contains("minor")) {
+                if (audioUrl.contains("minor")) {
                     type = "molli";
-                } else if (audio_url.contains("major")) {
+                } else if (audioUrl.contains("major")) {
                     type = "duuri";
-                } else if (audio_url.contains("augmented")) {
+                } else if (audioUrl.contains("augmented")) {
                     type = "ylinouseva";
-                } else if (audio_url.contains("diminished")) {
+                } else if (audioUrl.contains("diminished")) {
                     type = "vähennetty";
                 }
 
-                Question question = new Question(i, audio_url, type);
+                Question question = new Question(i, audioUrl, type);
                 questions.add(question);
                 save();
             }

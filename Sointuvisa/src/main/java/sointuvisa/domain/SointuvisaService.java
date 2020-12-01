@@ -7,10 +7,9 @@
 package sointuvisa.domain;
 
 import java.util.ArrayList;
-import sointuvisa.dao.userDao;
-import sointuvisa.dao.questionDao;
-import sointuvisa.dao.userDao;
-
+import sointuvisa.dao.QuestionDao;
+import sointuvisa.dao.UserDao;
+import sointuvisa.dao.UserDao;
 
 /**
  *
@@ -18,13 +17,14 @@ import sointuvisa.dao.userDao;
  */
 public class SointuvisaService {
 
-    private questionDao questionDao;
-    private userDao userDao;
+    private QuestionDao questionDao;
+    private UserDao userDao;
     private User user;
 
-    public SointuvisaService(questionDao questionDao, userDao userDao) {
+    public SointuvisaService(QuestionDao questionDao, UserDao userDao) {
         this.questionDao = questionDao;
         this.userDao = userDao;
+        
     }
 
     /**
@@ -32,14 +32,12 @@ public class SointuvisaService {
      *
      * @return kirjautuneena oleva käyttäjä
      */
-    public User getUser() {
-        return user;
-    }
+    
 
     public Boolean createUser(String username) {
 
         User u = new User(username);
-        user=u;
+        user = u;
         try {
             userDao.create(u);
         } catch (Exception e) {
@@ -57,17 +55,17 @@ public class SointuvisaService {
         User u = userDao.findUserByName(name);
         return u;
     }
-    
-    public User updateUserPoints(User user) throws Exception{
+
+    public User updateUserPoints(User user) throws Exception {
         userDao.updatePoints(user);
         return user;
     }
-    
-    public int getUserPoints(User user) throws Exception{
+
+    public int getUserPoints(User user) throws Exception {
         int points = userDao.getUserPoints(user);
         return points;
     }
-    
+
     public ArrayList<User> getTopThree() throws Exception {
         ArrayList<User> best = userDao.getTopThree();
         return best;

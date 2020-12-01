@@ -270,10 +270,11 @@ public class sointuvisaUi extends Application {
         VBox endPane = new VBox(10);
         Text endText = new Text();
         endText.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+        System.out.println("pisteet alempana"+points);
         endText.setText("Sait " + points + "/10 pistettä!");
         endText.textProperty().addListener(
                 (points, oldvalue, newvalue) -> {
-                    System.out.println("Sait "+ newvalue + "/10 pistettä");
+                    System.out.println("Sait " + newvalue + "/10 pistettä");
                 }
         // code goes here
         );

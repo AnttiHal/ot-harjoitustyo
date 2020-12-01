@@ -12,7 +12,7 @@ import sointuvisa.domain.Question;
  * @author anttihalmetoja
  *
  */
-public interface questionDao {
+public interface QuestionDao {
 
     Question create(Question question) throws Exception;
 

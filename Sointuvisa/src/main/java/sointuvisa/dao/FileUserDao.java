@@ -21,7 +21,7 @@ import sointuvisa.domain.User;
  *
  * @author anttihalmetoja
  */
-public class FileUserDao implements userDao {
+public class FileUserDao implements UserDao {
 
     private ArrayList<User> users;
     private String file;
@@ -57,18 +57,18 @@ public class FileUserDao implements userDao {
         Collections.sort(users, Comparator.comparing(User::getPoints));
         Collections.reverse(users);
         for (User u : users) {
-            System.out.println(u.getUsername()+u.getPoints());
+            System.out.println(u.getUsername() + u.getPoints());
         }
         if (users.size() == 1) {
             thebest.add(users.get(0));
-            
+
         } else if (users.size() == 2) {
             thebest.add(users.get(0));
-            thebest.add(users.get(1));           
+            thebest.add(users.get(1));
         } else {
             thebest.add(users.get(0));
-            thebest.add(users.get(1)); 
-            thebest.add(users.get(2)); 
+            thebest.add(users.get(1));
+            thebest.add(users.get(2));
         }
 
         return thebest;
@@ -85,19 +85,19 @@ public class FileUserDao implements userDao {
     }
 
     private void save() throws Exception {
-        try ( FileWriter writer = new FileWriter(new File(file))) {
+        try (FileWriter writer = new FileWriter(new File(file))) {
             for (User user : users) {
                 writer.write(user.getUsername() + ";" + user.getPoints() + "\n");
             }
         }
     }
-    
+
     @Override
     public int getUserPoints(User user) throws Exception {
-        int points=0;
+        int points = 0;
         for (User u : users) {
             if (u.getUsername().equals(user.getUsername())) {
-                points=u.getPoints();
+                points = u.getPoints();
             }
         }
         System.out.println(points);
@@ -107,7 +107,7 @@ public class FileUserDao implements userDao {
     @Override
     public User updatePoints(User user) throws Exception {
         for (User u : users) {
-            System.out.println(u.getUsername()+u.getPoints());
+            System.out.println(u.getUsername() + u.getPoints());
             if (u.getUsername().equals(user.getUsername())) {
                 u.addPointsByOne();
             }

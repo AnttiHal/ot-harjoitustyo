@@ -7,6 +7,7 @@ package sointuvisa.dao;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.Before;
@@ -28,28 +29,26 @@ public class FileUserDaoTest {
     public TemporaryFolder testFolder = new TemporaryFolder();    
   
     File userFile;  
-    userDao dao;  
+    UserDao dao;  
     public FileUserDaoTest() {
     }
     
     @Before
     public void setUp() throws Exception {
         userFile = testFolder.newFile("testfile_users.txt");  
-        userDao userDao = new FakeUserDao();
+        UserDao userDao = new FakeUserDao();
         userDao.create(new User("mattimeikalainen"));
+        userDao.create(new User("joukahainen"));
+        userDao.create(new User("väinämöinen"));
         
         try (FileWriter file = new FileWriter(userFile.getAbsolutePath())) {
-            file.write("mattimeikalainen\n");
+            file.write("mattimeikalainen;0\n");
+            file.write("joukahainen;0\n");
+            file.write("väinämöinen;0\n");
         }
         
         dao = new FileUserDao(userFile.getAbsolutePath());        
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
     
     @Test
     public void existingUserIsFound() throws Exception {
@@ -70,5 +69,26 @@ public class FileUserDaoTest {
         user.setPoints(5);
         assertEquals("mattimeikalainen", user.getUsername());
         assertEquals(5, user.getPoints());
+    }
+    
+    @Test
+    public void getTopThreeReturnsCorrectList() throws Exception {
+        User u1 = dao.findUserByName("mattimeikalainen");
+        User u2 = dao.findUserByName("joukahainen");
+        User u3 = dao.findUserByName("väinämöinen");
+        u1.addPointsByOne();
+        u1.addPointsByOne();
+        u2.addPointsByOne();
+        ArrayList<User> list = dao.getTopThree();
+        assertEquals("mattimeikalainen", list.get(0).getUsername());
+        assertEquals("joukahainen", list.get(1).getUsername());
+        
+    }
+    
+    @Test
+    public void createCreatesNewUser() throws Exception {
+        dao.create(new User("seppo"));
+        assertEquals("seppo", dao.findUserByName("seppo").getUsername());
+        
     }
 }
