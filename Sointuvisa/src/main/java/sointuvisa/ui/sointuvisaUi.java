@@ -272,7 +272,7 @@ public class sointuvisaUi extends Application {
         endText.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
         endText.setText("Sait " + points + "/10 pistettä!");
         endText.textProperty().addListener(
-                (observable, oldvalue, newvalue) -> {
+                (points, oldvalue, newvalue) -> {
                     System.out.println("Sait "+ newvalue + "/10 pistettä");
                 }
         // code goes here

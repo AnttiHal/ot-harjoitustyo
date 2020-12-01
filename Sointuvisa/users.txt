@@ -1,3 +1,5 @@
+faarao;9
+eemeli;9
 daavid;5
 asd;5
 selssius;5
@@ -8,4 +10,4 @@ antti;4
 davndsjereorvoiernv;0
 sdfsdfsdf;0
 kjkjhkj;0
-eemeli;9
+gideon;3
