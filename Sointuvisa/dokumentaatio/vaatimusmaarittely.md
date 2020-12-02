@@ -18,24 +18,24 @@ Sovelluksella on ainostaan peruskäyttäjiä, jotka voivat antaa käyttäjänime
 ## Perusversion suunniteltu toiminnallisuus
 ### Ennen käyttäjänimen antamista
 - käyttäjä voi valita käyttäjänimensä
-  - nimi voi olla 3-10 merkkiä pitkä ja sisältää merkit A-Z, 0-9
-  - jos nimi on jo käytössä, sovellus kertoo sen käyttäjälle ja varmistaa, että käyttäjä haluaa jatkaa
-- Linkki High score -näkymään
+  - nimi voi olla 3-10 merkkiä pitkä ja sisältää merkit A-Z, 0-9 (Tähän lisätty ehto että ei voi olla alle 3 merkkiä, muut ehdot puuttuvat)
+  - jos nimi on jo käytössä, sovellus kertoo sen käyttäjälle ja varmistaa, että käyttäjä haluaa jatkaa (Tämä puuttuu)
+- Linkki High score -näkymään (Tehty)
 
 ### Pelin aloitus
 - Avautuu pelin avausnäkymä jossa annettu pelaajalle tekstimuodossa ohjeet pelaamiseen sekä nappi "käynnistä", josta peli käynnistyy (tästä puuttuu ohje, muuten ok)
-- Peli toistaa käyttäjälle yhden audiotiedoston kerrallaan (yht 10 kpl) ja pelaajan on tunnistettava kyseessä olevan kolmisoinnun tyyppi
-  - Sointutyypit: Duuri, molli, vähennetty, ylinouseva (Lisätty viisi eri kysymystä, ensimmäinen vasta tallennetaan)
+- Peli toistaa käyttäjälle yhden audiotiedoston kerrallaan (yht 10 kpl) ja pelaajan on tunnistettava kyseessä olevan kolmisoinnun tyyppi (Tehty)
+  - Sointutyypit: Duuri, molli, vähennetty, ylinouseva (Lisätty 10 kysymystä, kaikki tallentuvat)
   
-### Pelatun kierroksen jälkeen (Tämä vielä toteuttamatta)
+### Pelatun kierroksen jälkeen 
 
-- pelaaja saa eteensä tulosnäkymän, jossa näkyy mitkä soinnut menivät oikein ja mitkä väärin
+- pelaaja saa eteensä tulosnäkymän, jossa näkyy mitkä soinnut menivät oikein ja mitkä väärin (tulosnäkymässä ainoastaan saadut pisteet ja tuloksen generointi ei vielä toimi)
 - pelaaja saa tiedon pääsikö high score -listalle.
 - pelaaja näkee suorituksen keston
 - Mahdollisuus joko
-  - lopettaa pelaaminen lopeta-painikkeesta
-  - pelata kierros uudestaan
-  - tarkastella high score -listaa
+  - lopettaa pelaaminen lopeta-painikkeesta (tehty)
+  - pelata kierros uudestaan (tehty)
+  - tarkastella high score -listaa (tämä siirtynee etusivulle)
  
 
 ## Jatkokehityksessä suunniteltu toiminnallisuus
