@@ -1,9 +1,3 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sointuvisa.domain;
 
 import java.util.ArrayList;
@@ -13,29 +7,31 @@ import sointuvisa.dao.UserDao;
 
 /**
  *
- * @author anttihalmetoja Sovelluslogiikasta vastaava luokka
+ * Sovelluslogiikasta vastaava luokka
  */
 public class SointuvisaService {
 
     private QuestionDao questionDao;
     private UserDao userDao;
     private User user;
+    private ArrayList<String> answers;
 
     public SointuvisaService(QuestionDao questionDao, UserDao userDao) {
         this.questionDao = questionDao;
         this.userDao = userDao;
+        this.answers=new ArrayList<>();
         
     }
 
     /**
-     * kirjautuneena oleva käyttäjä
+     * nimensä antanut käyttäjä
      *
-     * @return kirjautuneena oleva käyttäjä
+     * @return nimensä antanut käyttäjä
      */
     
 
     public Boolean createUser(String username) {
-
+        
         User u = new User(username);
         user = u;
         try {
@@ -55,7 +51,19 @@ public class SointuvisaService {
         User u = userDao.findUserByName(name);
         return u;
     }
-
+    public void addAnswer(String s) {
+        answers.add(s);
+    }
+    public String getAnswerByNumber(int n) {
+        return this.answers.get(n);
+    }
+/**
+     * Päivitä käyttäjän pisteitä
+     *
+     * @param   user    käyttäjä, jonka pisteitä halutaan muuttaa
+     * 
+     * @return käyttäjä, jonka pisteitä halutaan muuttaa
+     */
     public User updateUserPoints(User user) throws Exception {
         userDao.updatePoints(user);
         return user;
@@ -65,10 +73,18 @@ public class SointuvisaService {
         int points = userDao.getUserPoints(user);
         return points;
     }
-
+/**
+     * kolmen kärki
+     *
+     * @return kolme eniten oikeita vastauksia kerännyttä pelaajaa
+     */
     public ArrayList<User> getTopThree() throws Exception {
         ArrayList<User> best = userDao.getTopThree();
         return best;
+    }
+    
+    public ArrayList<Question> getQuestionList() throws Exception {
+        return questionDao.getListOfQuestions();
     }
 
 }

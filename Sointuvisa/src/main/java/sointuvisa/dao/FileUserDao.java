@@ -110,9 +110,17 @@ public class FileUserDao implements UserDao {
             System.out.println(u.getUsername() + u.getPoints());
             if (u.getUsername().equals(user.getUsername())) {
                 u.addPointsByOne();
+                System.out.println("käyttäjän pisteet: "+u.getPoints());
             }
         }
-        save();
+        
         return user;
     }
+
+    @Override
+    public void savePoints() throws Exception {
+        save();
+    }
+    
+    
 }

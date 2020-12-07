@@ -23,7 +23,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
@@ -156,6 +159,8 @@ public class sointuvisaUi extends Application {
         next1.setOnAction(e -> {
             primaryStage.setScene(qScene2);
             checkAnswerAndRaisePointsIfCorrect(q1);
+            addAnswer();
+
         });
         qScene1 = new Scene(p1);
 
@@ -167,6 +172,7 @@ public class sointuvisaUi extends Application {
         next2.setOnAction(e -> {
             primaryStage.setScene(qScene3);
             checkAnswerAndRaisePointsIfCorrect(q2);
+            addAnswer();
         });
         qScene2 = new Scene(p2);
 
@@ -178,6 +184,7 @@ public class sointuvisaUi extends Application {
         next3.setOnAction(e -> {
             primaryStage.setScene(qScene4);
             checkAnswerAndRaisePointsIfCorrect(q3);
+            addAnswer();
         });
         qScene3 = new Scene(p3);
 
@@ -187,6 +194,7 @@ public class sointuvisaUi extends Application {
         Button next4 = new Button("Seuraava");
         p4.getChildren().addAll(next4);
         next4.setOnAction(e -> {
+            addAnswer();
             primaryStage.setScene(qScene5);
             checkAnswerAndRaisePointsIfCorrect(q4);
         });
@@ -200,6 +208,7 @@ public class sointuvisaUi extends Application {
         next5.setOnAction(e -> {
             primaryStage.setScene(qScene6);
             checkAnswerAndRaisePointsIfCorrect(q5);
+            addAnswer();
         });
         qScene5 = new Scene(p5);
 
@@ -211,6 +220,7 @@ public class sointuvisaUi extends Application {
         next6.setOnAction(e -> {
             primaryStage.setScene(qScene7);
             checkAnswerAndRaisePointsIfCorrect(q6);
+            addAnswer();
         });
         qScene6 = new Scene(p6);
 
@@ -222,6 +232,7 @@ public class sointuvisaUi extends Application {
         next7.setOnAction(e -> {
             primaryStage.setScene(qScene8);
             checkAnswerAndRaisePointsIfCorrect(q7);
+            addAnswer();
         });
         qScene7 = new Scene(p7);
 
@@ -233,6 +244,7 @@ public class sointuvisaUi extends Application {
         next8.setOnAction(e -> {
             primaryStage.setScene(qScene9);
             checkAnswerAndRaisePointsIfCorrect(q8);
+            addAnswer();
         });
         qScene8 = new Scene(p8);
 
@@ -244,6 +256,7 @@ public class sointuvisaUi extends Application {
         next9.setOnAction(e -> {
             primaryStage.setScene(qScene10);
             checkAnswerAndRaisePointsIfCorrect(q9);
+            addAnswer();
         });
         qScene9 = new Scene(p9);
 
@@ -253,12 +266,62 @@ public class sointuvisaUi extends Application {
         Button next10 = new Button("katso tulokset");
         p10.getChildren().addAll(next10);
         next10.setOnAction(e -> {
+            checkAnswerAndRaisePointsIfCorrect(q10);
+            addAnswer();
+            VBox endPane = new VBox(10);
+            Text endText = new Text();
+            ArrayList<Question> list;
+            Text qu1 = new Text();
+            Text qu2 = new Text();
+            Text qu3 = new Text();
+            Text qu4 = new Text();
+            Text qu5 = new Text();
+            Text qu6 = new Text();
+            Text qu7 = new Text();
+            Text qu8 = new Text();
+            Text qu9 = new Text();
+            Text qu10 = new Text();
+            try {
+                list = sointuvisaService.getQuestionList();
+
+                qu1.setText("Kysymys 1, oikea sointutyyppi:" + list.get(0).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(0));
+                qu2.setText("Kysymys 2, oikea sointutyyppi:" + list.get(1).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(1));
+                qu3.setText("Kysymys 3, oikea sointutyyppi:" + list.get(2).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(2));
+                qu4.setText("Kysymys 4, oikea sointutyyppi:" + list.get(3).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(3));
+                qu5.setText("Kysymys 5, oikea sointutyyppi:" + list.get(4).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(4));
+                qu6.setText("Kysymys 6, oikea sointutyyppi:" + list.get(5).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(5));
+                qu7.setText("Kysymys 7, oikea sointutyyppi:" + list.get(6).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(6));
+                qu8.setText("Kysymys 8, oikea sointutyyppi:" + list.get(7).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(7));
+                qu9.setText("Kysymys 9, oikea sointutyyppi:" + list.get(8).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(8));
+                qu10.setText("Kysymys 10, oikea sointutyyppi:" + list.get(9).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(9));
+
+            } catch (Exception ex) {
+                Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            endText.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+            endText.setText("Sait " + getUserPoints() + "/10 pistettä!");
+
+            endText.setX(50);
+            endText.setY(50);
+
+            Button playAgain = new Button("Pelaa uudestaan");
+            Button quit = new Button("Lopeta");
+            playAgain.setOnAction(e1 -> {
+                primaryStage.setScene(startScene);
+
+            });
+            quit.setOnAction(e1 -> {
+                Platform.exit();
+            });
+            endPane.getChildren().addAll(header(), endText, qu1, qu2, qu3, qu4, qu5, qu6, qu7, qu8, qu9, qu10, playAgain, quit);
+            endScene = new Scene(endPane, 500, 500);
             primaryStage.setScene(endScene);
 
-            checkAnswerAndRaisePointsIfCorrect(q10);
             try {
+
                 points = getUserPoints();
-                System.out.println("pisteet: " + points);
+
             } catch (Exception ex) {
                 Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -267,31 +330,6 @@ public class sointuvisaUi extends Application {
         qScene10 = new Scene(p10);
 
         //EndScene
-        VBox endPane = new VBox(10);
-        Text endText = new Text();
-        endText.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
-        System.out.println("pisteet alempana"+points);
-        endText.setText("Sait " + points + "/10 pistettä!");
-        endText.textProperty().addListener(
-                (points, oldvalue, newvalue) -> {
-                    System.out.println("Sait " + newvalue + "/10 pistettä");
-                }
-        // code goes here
-        );
-        endText.setX(50);
-        endText.setY(50);
-        Button playAgain = new Button("Pelaa uudestaan");
-        Button quit = new Button("Lopeta");
-        playAgain.setOnAction(e -> {
-            primaryStage.setScene(startScene);
-
-        });
-        quit.setOnAction(e -> {
-            Platform.exit();
-        });
-        endPane.getChildren().addAll(header(), endText, playAgain, quit);
-        endScene = new Scene(endPane, 300, 200);
-
         primaryStage.setTitle("Sointuvisa");
         primaryStage.setScene(usernameInputScene);
         primaryStage.show();
@@ -318,6 +356,14 @@ public class sointuvisaUi extends Application {
                     Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        }
+    }
+
+    public void addAnswer() {
+        RadioButton rb = (RadioButton) group.getSelectedToggle();
+        if (rb != null) {
+            String selected = rb.getText().toLowerCase();
+            sointuvisaService.addAnswer(selected);
         }
     }
 

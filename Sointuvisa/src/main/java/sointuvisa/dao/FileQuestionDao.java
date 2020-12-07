@@ -105,5 +105,10 @@ public class FileQuestionDao implements QuestionDao {
 
         return question;
     }
+    
+    @Override
+    public ArrayList<Question> getListOfQuestions() {
+        return this.questions;
+    }
 
 }

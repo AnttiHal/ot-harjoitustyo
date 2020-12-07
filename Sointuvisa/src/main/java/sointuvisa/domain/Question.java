@@ -7,7 +7,7 @@ package sointuvisa.domain;
 
 /**
  *
- * @author anttihalmetoja sointuvisan yksittäistä kysymystä kuvaava luokka
+ * sointuvisan yksittäistä kysymystä kuvaava luokka
  */
 public class Question {
 

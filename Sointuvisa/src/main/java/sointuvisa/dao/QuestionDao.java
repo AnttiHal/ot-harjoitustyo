@@ -5,6 +5,7 @@
  */
 package sointuvisa.dao;
 
+import java.util.ArrayList;
 import sointuvisa.domain.Question;
 
 /**
@@ -17,4 +18,8 @@ public interface QuestionDao {
     Question create(Question question) throws Exception;
 
     Question findQuestionById(int id) throws Exception;
+    
+    ArrayList getListOfQuestions() throws Exception;
+    
+    void savePoints() throws Exception;
 }

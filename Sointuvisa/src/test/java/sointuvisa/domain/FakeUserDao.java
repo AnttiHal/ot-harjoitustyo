@@ -92,4 +92,9 @@ public class FakeUserDao implements UserDao {
         return points;
     }
 
+    @Override
+    public void savePoints() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
