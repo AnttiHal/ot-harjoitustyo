@@ -57,6 +57,12 @@ public class SointuvisaService {
     public String getAnswerByNumber(int n) {
         return this.answers.get(n);
     }
+    public void clearAnswerList() {
+        this.answers.clear();
+    }
+    public void savePoints() throws Exception {
+        userDao.savePoints();
+    }
 /**
      * Päivitä käyttäjän pisteitä
      *
@@ -85,6 +91,10 @@ public class SointuvisaService {
     
     public ArrayList<Question> getQuestionList() throws Exception {
         return questionDao.getListOfQuestions();
+    }
+    
+    public void resetPoints(User u) throws Exception {
+        userDao.setPointsToZero(u);
     }
 
 }

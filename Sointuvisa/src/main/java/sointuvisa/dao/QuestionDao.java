@@ -21,5 +21,4 @@ public interface QuestionDao {
     
     ArrayList getListOfQuestions() throws Exception;
     
-    void savePoints() throws Exception;
 }

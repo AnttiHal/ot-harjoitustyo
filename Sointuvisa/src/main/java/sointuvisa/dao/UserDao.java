@@ -23,5 +23,9 @@ public interface UserDao {
     ArrayList<User> getTopThree() throws Exception;
 
     int getUserPoints(User user) throws Exception;
+    
+    void savePoints() throws Exception;
+    
+    void setPointsToZero(User u) throws Exception;
 
 }

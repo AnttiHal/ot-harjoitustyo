@@ -111,7 +111,11 @@ public class sointuvisaUi extends Application {
             }
         });
         HSButton.setOnAction(e -> {
-            primaryStage.setScene(HSScene);
+            try {
+                primaryStage.setScene(getHighScoreScene(usernameInputScene, primaryStage));
+            } catch (Exception ex) {
+                Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
         usernameInputPane.getChildren().addAll(header(), loginMessage, loginLabel, usernameInput, okButton, message, HSButton);
         usernameInputScene = new Scene(usernameInputPane, 300, 250);
@@ -133,23 +137,7 @@ public class sointuvisaUi extends Application {
         startPane.getChildren().add(startButton);
         startScene = new Scene(startPane, 300, 200);
 
-        //Highscore scene
-        VBox HSPane = new VBox(10);
-        ArrayList<User> theBest = sointuvisaService.getTopThree();
-        Text tulokset = new Text();
-        Text yksi = new Text();
-        Text kaksi = new Text();
-        Text kolme = new Text();
-        yksi.setText("1. " + theBest.get(0).getUsername() + ", " + theBest.get(0).getPoints() + " pistettä");
-        kaksi.setText("2. " + theBest.get(1).getUsername() + ", " + theBest.get(1).getPoints() + " pistettä");
-        kolme.setText("3. " + theBest.get(2).getUsername() + ", " + theBest.get(2).getPoints() + " pistettä");
-        tulokset.setText("Tarkkakorvaisimmat pelaajat");
-        Button backButton = new Button("Palaa alkuun");
-        backButton.setOnAction(e -> {
-            primaryStage.setScene(usernameInputScene);
-        });
-        HSPane.getChildren().addAll(header(), tulokset, yksi, kaksi, kolme, backButton);
-        HSScene = new Scene(HSPane, 300, 200);
+        
 
         //QuestionScene 1
         q1 = sointuvisaService.getQuestionById(1);
@@ -283,7 +271,6 @@ public class sointuvisaUi extends Application {
             Text qu10 = new Text();
             try {
                 list = sointuvisaService.getQuestionList();
-
                 qu1.setText("Kysymys 1, oikea sointutyyppi:" + list.get(0).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(0));
                 qu2.setText("Kysymys 2, oikea sointutyyppi:" + list.get(1).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(1));
                 qu3.setText("Kysymys 3, oikea sointutyyppi:" + list.get(2).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(2));
@@ -304,17 +291,37 @@ public class sointuvisaUi extends Application {
 
             endText.setX(50);
             endText.setY(50);
-
+            Button HSButton2 = new Button("Huipputulokset");
             Button playAgain = new Button("Pelaa uudestaan");
             Button quit = new Button("Lopeta");
+            HSButton2.setOnAction(e1 -> {
+                try {
+                    primaryStage.setScene(getHighScoreScene(endScene, primaryStage));
+                } catch (Exception ex) {
+                    Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+            
             playAgain.setOnAction(e1 -> {
+                try {
+                    sointuvisaService.clearAnswerList();
+                    sointuvisaService.resetPoints(user);
+                    sointuvisaService.savePoints();
+                } catch (Exception ex) {
+                    Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 primaryStage.setScene(startScene);
 
             });
             quit.setOnAction(e1 -> {
+                try {
+                    sointuvisaService.savePoints();
+                } catch (Exception ex) {
+                    Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 Platform.exit();
             });
-            endPane.getChildren().addAll(header(), endText, qu1, qu2, qu3, qu4, qu5, qu6, qu7, qu8, qu9, qu10, playAgain, quit);
+            endPane.getChildren().addAll(header(), endText, qu1, qu2, qu3, qu4, qu5, qu6, qu7, qu8, qu9, qu10, HSButton2, playAgain, quit);
             endScene = new Scene(endPane, 500, 500);
             primaryStage.setScene(endScene);
 
@@ -358,7 +365,25 @@ public class sointuvisaUi extends Application {
             }
         }
     }
-
+    public Scene getHighScoreScene(Scene backScene, Stage ps) throws Exception {
+        VBox HSPane = new VBox(10);
+        ArrayList<User> theBest = sointuvisaService.getTopThree();
+        Text tulokset = new Text();
+        Text yksi = new Text();
+        Text kaksi = new Text();
+        Text kolme = new Text();
+        yksi.setText("1. " + theBest.get(0).getUsername() + ", " + theBest.get(0).getPoints() + " pistettä");
+        kaksi.setText("2. " + theBest.get(1).getUsername() + ", " + theBest.get(1).getPoints() + " pistettä");
+        kolme.setText("3. " + theBest.get(2).getUsername() + ", " + theBest.get(2).getPoints() + " pistettä");
+        tulokset.setText("Tarkkakorvaisimmat pelaajat");
+        Button backButton = new Button("Takaisin");
+        backButton.setOnAction(e -> {
+            ps.setScene(backScene);
+        });
+        HSPane.getChildren().addAll(header(), tulokset, yksi, kaksi, kolme, backButton);
+        HSScene = new Scene(HSPane, 300, 200);
+        return HSScene;
+    }
     public void addAnswer() {
         RadioButton rb = (RadioButton) group.getSelectedToggle();
         if (rb != null) {

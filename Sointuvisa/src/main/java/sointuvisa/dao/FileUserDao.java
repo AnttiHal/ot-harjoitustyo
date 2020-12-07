@@ -100,16 +100,17 @@ public class FileUserDao implements UserDao {
                 points = u.getPoints();
             }
         }
-        System.out.println(points);
+        
         return points;
     }
 
     @Override
     public User updatePoints(User user) throws Exception {
         for (User u : users) {
-            System.out.println(u.getUsername() + u.getPoints());
+            
             if (u.getUsername().equals(user.getUsername())) {
                 u.addPointsByOne();
+                System.out.println(u.getUsername() + u.getPoints());
                 System.out.println("käyttäjän pisteet: "+u.getPoints());
             }
         }
@@ -120,6 +121,17 @@ public class FileUserDao implements UserDao {
     @Override
     public void savePoints() throws Exception {
         save();
+    }
+
+    @Override
+    public void setPointsToZero(User user) throws Exception {
+       for (User u : users) {
+            
+            if (u.getUsername().equals(user.getUsername())) {
+                u.setPoints(0);
+                System.out.println("käyttäjän pisteet: "+u.getPoints());
+            }
+        }
     }
     
     
