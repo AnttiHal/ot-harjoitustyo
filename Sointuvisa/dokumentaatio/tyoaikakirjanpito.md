@@ -10,6 +10,7 @@
 |24.11.  | 8    |Checkstyle, testaus, rakenteen suunnittelu, arkkitehtuuri.md|
 |30.11.  | 8    |Checkstyle, testaus, arkkitehtuuri.md, changelistenerin korjausta|
 |1.12.  | 8    |Checkstyle, testaus, rakenteen suunnittelu, changelistenerin korjausta|
+|7.12.  | 7    |Checkstyle, Oikeiden vastausten tallennus, EndScenen kehitys, javadocin aloitus|
 
 
-| yht   | 39   | |
+| yht   | 46   | |
