@@ -7,7 +7,7 @@ Ulkoasu on toteutettu javafx:llä.<br>
 Projektin koodin pystyy suorittamaan NetBeansin vihreällä napilla _tai/ja_ komennolla 
 <code>mvn compile exec:java -Dexec.mainClass=Main</code><br>
 Sovellusta pystyy testaamaan komennolla <code>mvn test</code><br>
-Sovelluksella saa generoitua testikattavuusraportin komennolla <code>mvn test jacoco:report</code>
+Sovelluksella saa generoitua testikattavuusraportin komennolla <code>mvn test jacoco:report</code><br>
 [linkki suorituskelpoiseen jar-tiedostoon](https://github.com/AnttiHal/ot-harjoitustyo/releases/tag/viikko5)
 
 ## Näkymät
