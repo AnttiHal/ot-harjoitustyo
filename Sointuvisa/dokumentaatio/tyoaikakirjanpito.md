@@ -8,6 +8,8 @@
 |17.11.  | 5    |Sovelluksen rakenteen toteutusta, tiedon tallennuksen toteutusta|
 |23.11.  | 1    |testien tekoa, sovelluksen rakennusta|
 |24.11.  | 8    |Checkstyle, testaus, rakenteen suunnittelu, arkkitehtuuri.md|
-|30.11.  | 8    |Checkstyle, testaus, rakenteen suunnittelu, arkkitehtuuri.md|
-|1.12.  | 8    |Checkstyle, testaus, rakenteen suunnittelu, arkkitehtuuri.md|
-| yht   | 23   | |
+|30.11.  | 8    |Checkstyle, testaus, arkkitehtuuri.md, changelistenerin korjausta|
+|1.12.  | 8    |Checkstyle, testaus, rakenteen suunnittelu, changelistenerin korjausta|
+
+
+| yht   | 39   | |
