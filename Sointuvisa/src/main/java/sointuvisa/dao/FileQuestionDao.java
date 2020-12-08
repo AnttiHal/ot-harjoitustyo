@@ -30,19 +30,19 @@ public class FileQuestionDao implements QuestionDao {
         this.audioUrls = new ArrayList<>();
 
         try {
-            this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-major-1.aif");
-            this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-major-2.aif");
-            this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-major-3.aif");
-            this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-major-4.aif");
-            this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-minor-1.aif");
-            this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-minor-2.aif");
-            this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-minor-3.aif");
-            this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-diminished-1.aif");
-            this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-diminished-2.aif");
-            this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-diminished-3.aif");
-            this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-1.aif");
-            this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-2.aif");
-            this.audioUrls.add("src/main/java/sointuvisa/audiofiles/kolmisoinnut-augmented-3.aif");
+            this.audioUrls.add("/kolmisoinnut-major-1.aif");
+            this.audioUrls.add("/kolmisoinnut-major-2.aif");
+            this.audioUrls.add("/kolmisoinnut-major-3.aif");
+            this.audioUrls.add("/kolmisoinnut-major-4.aif");
+            this.audioUrls.add("/kolmisoinnut-minor-1.aif");
+            this.audioUrls.add("/kolmisoinnut-minor-2.aif");
+            this.audioUrls.add("/kolmisoinnut-minor-3.aif");
+            this.audioUrls.add("/kolmisoinnut-diminished-1.aif");
+            this.audioUrls.add("/kolmisoinnut-diminished-2.aif");
+            this.audioUrls.add("/kolmisoinnut-diminished-3.aif");
+            this.audioUrls.add("/kolmisoinnut-augmented-1.aif");
+            this.audioUrls.add("/kolmisoinnut-augmented-2.aif");
+            this.audioUrls.add("/kolmisoinnut-augmented-3.aif");
 
             Random r = new Random();
 

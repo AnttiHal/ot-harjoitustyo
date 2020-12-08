@@ -10,6 +10,8 @@ package sointuvisa.ui;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -392,7 +394,7 @@ public class sointuvisaUi extends Application {
         }
     }
 
-    public VBox addQuestiontemplate(Question q) {
+    public VBox addQuestiontemplate(Question q) throws URISyntaxException {
         Text text = header();
 
         Text questionNumberText = new Text();
@@ -439,7 +441,8 @@ public class sointuvisaUi extends Application {
                 }
             }
         });
-        Media media1 = new Media(new File(q.getAudioUrl()).toURI().toString());
+        
+        Media media1 = new Media(this.getClass().getResource(q.getAudioUrl()).toString());
         MediaPlayer mediaPlayer1 = new MediaPlayer(media1);
         play1.setOnAction(e -> {
             mediaPlayer1.seek(mediaPlayer1.getStartTime());
