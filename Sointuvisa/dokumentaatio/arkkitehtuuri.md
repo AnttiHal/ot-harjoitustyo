@@ -36,3 +36,7 @@ _SointuvisaService_ pääsee käsiksi _User_- ja _Question_-luokkiin rajapintoje
 
 
 <img src="https://github.com/AnttiHal/ot-harjoitustyo/blob/master/Sointuvisa/dokumentaatio/images/arkkitehtuuri.png">
+
+## Tietojen tallennus
+
+Käyttäjät ja kysymykset tallennetaan tiedostoihin. Näistä toiminnoista vastaavat luokat _FileUserDao_ ja _FileQuestionDao_.
