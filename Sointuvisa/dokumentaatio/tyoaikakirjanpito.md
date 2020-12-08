@@ -11,6 +11,7 @@
 |30.11.  | 8    |Checkstyle, testaus, arkkitehtuuri.md, changelistenerin korjausta|
 |1.12.  | 8    |Checkstyle, testaus, rakenteen suunnittelu, changelistenerin korjausta|
 |7.12.  | 7    |Checkstyle, Oikeiden vastausten tallennus, EndScenen kehitys, javadocin aloitus|
+|8.12.  | 9    |testauksen jatkoa, audiofailien toiminnan korjaus jar-tiedoston kanssa, uusi jar|
 
 
-| yht   | 46   | |
+| yht   | 55   | |
