@@ -19,24 +19,16 @@ import sointuvisa.dao.QuestionDao;
  * @author anttihalmetoja
  */
 public class FakeQuestionDao implements QuestionDao {
+    ArrayList<Question> questions;
     
-    
-    
-    
-    
-    @Before
-    public void setUp() {
+    public FakeQuestionDao() {
+        this.questions = new ArrayList<>();
+        this.questions.add(new Question(1, "test_url", "molli"));
+        this.questions.add(new Question(2, "test_url2", "duuri"));
     }
     
-    @After
-    public void tearDown() {
-    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
+     
 
     @Override
     public Question create(Question question) throws Exception {
@@ -45,11 +37,20 @@ public class FakeQuestionDao implements QuestionDao {
 
     @Override
     public Question findQuestionById(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        StringBuilder url = new StringBuilder();
+        StringBuilder type = new StringBuilder();
+        for (Question q : this.questions) {
+            if (q.getId()==id) {
+                url.append(q.getAudioUrl());
+                type.append(q.getChordType());
+            }
+        }
+        Question q = new Question(id, url.toString(), type.toString());
+        return q;
     }
 
     @Override
     public ArrayList getListOfQuestions() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.questions;
     }
 }

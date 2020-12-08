@@ -85,7 +85,7 @@ public class FileUserDao implements UserDao {
     }
 
     private void save() throws Exception {
-        try (FileWriter writer = new FileWriter(new File(file))) {
+        try ( FileWriter writer = new FileWriter(new File(file))) {
             for (User user : users) {
                 writer.write(user.getUsername() + ";" + user.getPoints() + "\n");
             }
@@ -100,21 +100,21 @@ public class FileUserDao implements UserDao {
                 points = u.getPoints();
             }
         }
-        
+
         return points;
     }
 
     @Override
     public User updatePoints(User user) throws Exception {
         for (User u : users) {
-            
+
             if (u.getUsername().equals(user.getUsername())) {
                 u.addPointsByOne();
                 System.out.println(u.getUsername() + u.getPoints());
-                System.out.println("käyttäjän pisteet: "+u.getPoints());
+                System.out.println("käyttäjän pisteet: " + u.getPoints());
             }
         }
-        
+
         return user;
     }
 
@@ -125,14 +125,13 @@ public class FileUserDao implements UserDao {
 
     @Override
     public void setPointsToZero(User user) throws Exception {
-       for (User u : users) {
-            
+        for (User u : users) {
+
             if (u.getUsername().equals(user.getUsername())) {
                 u.setPoints(0);
-                System.out.println("käyttäjän pisteet: "+u.getPoints());
+                System.out.println("käyttäjän pisteet: " + u.getPoints());
             }
         }
     }
-    
-    
+
 }

@@ -94,12 +94,18 @@ public class FakeUserDao implements UserDao {
 
     @Override
     public void savePoints() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
-    public void setPointsToZero(User u) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setPointsToZero(User user) throws Exception {
+        for (User u : users) {
+
+            if (u.getUsername().equals(user.getUsername())) {
+                u.setPoints(0);
+                
+            }
+        }
     }
 
 }

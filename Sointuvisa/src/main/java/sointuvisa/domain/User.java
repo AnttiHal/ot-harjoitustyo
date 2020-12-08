@@ -6,7 +6,7 @@
 package sointuvisa.domain;
 
 /**
- * Yksittäistä käyttäjää kuvaava luokka 
+ * Yksittäistä käyttäjää kuvaava luokka
  */
 public class User {
 

@@ -137,8 +137,6 @@ public class sointuvisaUi extends Application {
         startPane.getChildren().add(startButton);
         startScene = new Scene(startPane, 300, 200);
 
-        
-
         //QuestionScene 1
         q1 = sointuvisaService.getQuestionById(1);
         VBox p1 = addQuestiontemplate(q1);
@@ -301,7 +299,7 @@ public class sointuvisaUi extends Application {
                     Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
-            
+
             playAgain.setOnAction(e1 -> {
                 try {
                     sointuvisaService.clearAnswerList();
@@ -365,6 +363,7 @@ public class sointuvisaUi extends Application {
             }
         }
     }
+
     public Scene getHighScoreScene(Scene backScene, Stage ps) throws Exception {
         VBox HSPane = new VBox(10);
         ArrayList<User> theBest = sointuvisaService.getTopThree();
@@ -384,6 +383,7 @@ public class sointuvisaUi extends Application {
         HSScene = new Scene(HSPane, 300, 200);
         return HSScene;
     }
+
     public void addAnswer() {
         RadioButton rb = (RadioButton) group.getSelectedToggle();
         if (rb != null) {

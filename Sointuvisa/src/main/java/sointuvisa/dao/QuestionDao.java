@@ -18,7 +18,7 @@ public interface QuestionDao {
     Question create(Question question) throws Exception;
 
     Question findQuestionById(int id) throws Exception;
-    
+
     ArrayList getListOfQuestions() throws Exception;
-    
+
 }
