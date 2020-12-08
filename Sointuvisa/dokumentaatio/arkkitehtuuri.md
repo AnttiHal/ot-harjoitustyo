@@ -24,5 +24,15 @@ Kun käyttäjä kerää pisteitä oikeista soinnuista, tallentuvat pisteet sovel
 
 ## Sovelluslogiikka
 
+Sovelluksessa on kaksi loogista luokkaa, _User_ ja _Question_. _User_-luokkaan tallentuu käyttäjän nimi, sekä hänen ansaitsemat pisteet, jotka ovat aina alussa nolla. _Question_-luokkaan tallentuvat id, audio-tiedoston url, sekä soinnun tyyppi. Kysymykset generoituvat automaattisesti Random-olion avulla satunnaiseen järjestykseen kun peli alkaa.
+
+Sovelluksen toiminnallisuuksia käytetään _SointuvisaService_-luokan avulla. Yksi instanssi luokasta luodaan sovelluksen käynnistyessä, ja sen metodeja hyödyntämällä käyttöliittymästä käsin toteutetaan eri toiminnallisuuksia, kuten
+- getQuestionById
+- getUserByUsername
+- updateUserPoints
+- getTopThree
+
+_SointuvisaService_ pääsee käsiksi _User_- ja _Question_-luokkiin rajapintojen _Userdao_ ja _Questiondao_ kautta. Alla olevassa kuvassa näkyy _SointuvisaService_-luokan suhde muihin luokkiin.
+
 
 <img src="https://github.com/AnttiHal/ot-harjoitustyo/blob/master/Sointuvisa/dokumentaatio/images/arkkitehtuuri.png">
