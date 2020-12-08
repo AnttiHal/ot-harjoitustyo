@@ -1,6 +1,7 @@
 faarao;11
 pekka;10
 eemeli;9
+dfsd;0
 rhsfghsfg;7
 jdfhs<dfkjskldfjs;6
 dffgdfg;5
@@ -8,6 +9,7 @@ sdfsdf;5
 daavid;5
 asd;5
 selssius;5
+ana;4
 bertta;4
 ddsfsd;4
 werr;4
