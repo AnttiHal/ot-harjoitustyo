@@ -39,4 +39,19 @@ _SointuvisaService_ pääsee käsiksi _User_- ja _Question_-luokkiin rajapintoje
 
 ## Tietojen tallennus
 
-Käyttäjät ja kysymykset tallennetaan tiedostoihin. Näistä toiminnoista vastaavat luokat _FileUserDao_ ja _FileQuestionDao_.
+Käyttäjät ja kysymykset tallennetaan tiedostoihin. Näistä toiminnoista vastaavat luokat _FileUserDao_ ja _FileQuestionDao_. Luokkia käytetään rajapintojen avulla, jotta mahdollinen tiedon talennustavan muuttaminen sujuisi tarvittaessa kivuttomasti.
+
+### Tiedostot
+
+Käyttäjät tallennetaan tiedostoon users.txt ja kysymykset tiedostoon questions.txt.
+tiedoston _users.txt_ tallenusmuoto:
+<pre>
+antti;0
+make;0
+</pre>
+
+tiedoston _questions.txt_ tallenusmuoto:
+<pre>
+1;/audiotiedostonimi.aiff;molli
+1;/audiotiedostonimi2.aiff;duuri
+</pre>
