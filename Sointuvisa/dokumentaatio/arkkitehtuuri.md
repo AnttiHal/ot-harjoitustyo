@@ -56,6 +56,9 @@ Tiedoston _questions.txt_ tallennusmuoto:
 1;/audiotiedostonimi2.aiff;duuri
 </pre>
 
+## Päätoiminnallisuudet
+
+
 ## Ohjelman heikkoudet
 
 Käyttöliittymä on käytännössä yksi valtava luokka, ja se olisi ehdottomasti pitänyt jakaa pienempiin luokkiinsa. Nyt kuitenkin aika kului muihin sovellukseen liittyviin asioihin.
