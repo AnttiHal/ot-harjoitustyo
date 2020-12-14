@@ -58,8 +58,12 @@ Tiedoston _questions.txt_ tallennusmuoto:
 
 ## Päätoiminnallisuudet
 
-Alla on kuvattu ohjelman toiminta, kun käyttäjä valitsee radiobuttonilla haluamansa vaihtoehdon ja painaa nappia seuraava.<br>
+Alla on kuvattu ohjelman toiminta, kun käyttäjä valitsee radiobuttonilla haluamansa vaihtoehdon ja painaa nappia _seuraava_.<br>
 <img src="https://github.com/AnttiHal/ot-harjoitustyo/blob/master/Sointuvisa/dokumentaatio/images/toiminnallisuudet.png">
+
+
+Alla on kuvattu ohjelman toiminta, kun käyttäjä kirjoittaa nimen tekstikenttään ja painaa nappia _OK_.<br>
+<img src="https://github.com/AnttiHal/ot-harjoitustyo/blob/master/Sointuvisa/dokumentaatio/images/toiminnallisuudet1.png">
 
 ## Ohjelman heikkoudet
 
