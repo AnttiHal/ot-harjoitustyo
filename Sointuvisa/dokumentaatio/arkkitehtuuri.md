@@ -43,14 +43,14 @@ Käyttäjät ja kysymykset tallennetaan tiedostoihin. Näistä toiminnoista vast
 
 ### Tiedostot
 
-Käyttäjät tallennetaan tiedostoon users.txt ja kysymykset tiedostoon questions.txt.
-tiedoston _users.txt_ tallenusmuoto:
+Käyttäjät tallennetaan tiedostoon _users.txt_ ja kysymykset tiedostoon _questions.txt_. Sovelluksen juureen sijoitettu _konfiguraatiotiedosto config.properties_ sisältää tarvittavat tiedostot.<br>
+Tiedoston _users.txt_ tallennusmuoto:
 <pre>
 antti;0
 make;0
 </pre>
 
-tiedoston _questions.txt_ tallenusmuoto:
+Tiedoston _questions.txt_ tallennusmuoto:
 <pre>
 1;/audiotiedostonimi.aiff;molli
 1;/audiotiedostonimi2.aiff;duuri
