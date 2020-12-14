@@ -16,6 +16,7 @@ import sointuvisa.domain.Question;
 
 /**
  *
+ * Kysymysten tallentamisesta huolehtiva luokka.
  * @author anttihalmetoja
  */
 public class FileQuestionDao implements QuestionDao {
@@ -68,7 +69,11 @@ public class FileQuestionDao implements QuestionDao {
             writer.close();
         }
     }
-
+    /**
+     * Metodi tallentaa listan vastausket tiedostoon
+     *     
+     * 
+     */
     private void save() throws Exception {
         try ( FileWriter writer = new FileWriter(new File(file))) {
             for (Question question : questions) {
@@ -105,7 +110,12 @@ public class FileQuestionDao implements QuestionDao {
 
         return question;
     }
-
+    /**
+     * Metodi palauttaa kolmen kärki -listan
+     *
+     @return topthree-lista
+     * 
+     */
     @Override
     public ArrayList<Question> getListOfQuestions() {
         return this.questions;

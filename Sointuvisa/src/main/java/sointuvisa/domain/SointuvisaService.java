@@ -39,7 +39,11 @@ public class SointuvisaService {
         }
         return true;
     }
-    
+    /**
+     * kysymys Id:n perusteella
+     *
+     * @return Haluttu kysymys Id:n perusteella
+     */
     public Question getQuestionById(int id) throws Exception {
         Question q = questionDao.findQuestionById(id);
         return q;
@@ -49,15 +53,34 @@ public class SointuvisaService {
         User u = userDao.findUserByName(name);
         return u;
     }
-
+    
+    /**
+     * Lisää vastaus
+     *
+     @param s sointutyyppi
+     * 
+     */
     public void addAnswer(String s) {
         answers.add(s);
     }
-
+    
+    /**
+     * Metodi palauttaa vastauksen numeron perusteella
+     *
+     @param n numero
+     * 
+     @return vastaus
+     * 
+     */
     public String getAnswerByNumber(int n) {
         return this.answers.get(n);
     }
 
+    /**
+     * Metodi tyhjentää vastauslistan
+     *
+     
+     */
     public void clearAnswerList() {
         this.answers.clear();
     }
