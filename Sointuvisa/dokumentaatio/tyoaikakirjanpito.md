@@ -12,6 +12,7 @@
 |1.12.  | 8    |Checkstyle, testaus, rakenteen suunnittelu, changelistenerin korjausta|
 |7.12.  | 7    |Checkstyle, Oikeiden vastausten tallennus, EndScenen kehitys, javadocin aloitus|
 |8.12.  | 9    |testauksen jatkoa, audiofailien toiminnan korjaus jar-tiedoston kanssa, uusi jar|
+|14.12.  | 2    |javadocin jatkoa, testausdokumentti, arkkitehtuuri|
 
 
-| yht   | 55   | |
+| yht   | 57   | |
