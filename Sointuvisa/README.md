@@ -8,21 +8,57 @@ Projektin koodin pystyy suorittamaan NetBeansin vihreällä napilla _tai/ja_ kom
 <code>mvn compile exec:java -Dexec.mainClass=Main</code><br>
 Sovellusta pystyy testaamaan komennolla <code>mvn test</code><br>
 Sovelluksella saa generoitua testikattavuusraportin komennolla <code>mvn test jacoco:report</code><br>
-[linkki suorituskelpoiseen jar-tiedostoon](https://github.com/AnttiHal/ot-harjoitustyo/releases/tag/viikko5)
-
-## Näkymät
-Alkunäyttö, jossa käyttäjänimen anto.<br>
-Aloitusnäyttö, jossa käyttäjänimi ja aloita-painike. <br>
-pelinäkymä, jossa kuuntele-nappi, radiobuttonit valintaa varten, sekä seuraava-nappi
+[linkki suorituskelpoiseen jar-tiedostoon](https://github.com/AnttiHal/ot-harjoitustyo/releases/tag/final)
 
 
+### Testaus
 
-##  Tämänhetkinen tilanne
+Testien suoritus tapahtuu komennolla
 
-Sovellukselle on luotu runko. 
-Käyttäjänimen tallennus tiedostoon onnistuu.
-Kysymysten tallennus tiedostoon onnistuu. (tapahtuu automaattisesti sovelluksen avautuessa)
-Aloitusnäkymä on luotu ja se avautuu kun sovellus käynnistetään.
-Pelinäkymä on luotu ja se avautuu painamalla OK-painiketta käyttjänimen antamisen jälkeen. 
+```
+mvn test
+```
 
+Testikattavuusraportti saadaan luotua komennolla
+
+```
+mvn jacoco:report
+```
+
+Kattavuusraportin tarkastelu onnistuu kansiossa _target/site/jacoco/_ komennolla
+
+
+```
+open index.html
+```
+
+### Suoritettavan jarin generointi
+
+Komento
+
+```
+mvn package
+```
+
+generoi hakemistoon _target_ suoritettavan jar-tiedoston _Sointuvisa-1.0-SNAPSHOT.jar_
+
+### JavaDoc
+
+JavaDoc generoidaan komennolla
+
+```
+mvn javadoc:javadoc
+```
+
+JavaDocia voi tarkastella avaamalla selaimella tiedosto _target/site/apidocs/index.html_
+
+### Checkstyle
+
+Tarkastukset suoritetaan komennolla
+
+```
+ mvn jxr:jxr checkstyle:checkstyle
+```
+
+Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedosto _target/site/checkstyle.html_
 

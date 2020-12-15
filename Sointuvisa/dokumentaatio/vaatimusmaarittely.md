@@ -15,27 +15,29 @@ Sovelluksella on ainostaan peruskäyttäjiä, jotka voivat antaa käyttäjänime
 
           
 
-## Perusversion suunniteltu toiminnallisuus
+## Perusversion toiminnallisuus
 ### Ennen käyttäjänimen antamista
 - käyttäjä voi valita käyttäjänimensä
-  - nimi voi olla 3-10 merkkiä pitkä ja sisältää merkit A-Z, 0-9 (Tähän lisätty ehto että ei voi olla alle 3 merkkiä, muut ehdot puuttuvat)
-  - jos nimi on jo käytössä, sovellus kertoo sen käyttäjälle ja varmistaa, että käyttäjä haluaa jatkaa (Tämä puuttuu)
-- Linkki High score -näkymään (Tehty)
+  - nimi voi olla 3-10 merkkiä pitkä.
+- Linkki _huipputulokset_ -näkymään
 
-### Pelin aloitus
-- Avautuu pelin avausnäkymä jossa annettu pelaajalle tekstimuodossa ohjeet pelaamiseen sekä nappi "käynnistä", josta peli käynnistyy (tästä puuttuu ohje, muuten ok)
-- Peli toistaa käyttäjälle yhden audiotiedoston kerrallaan (yht 10 kpl) ja pelaajan on tunnistettava kyseessä olevan kolmisoinnun tyyppi (Tehty)
-  - Sointutyypit: Duuri, molli, vähennetty, ylinouseva (Lisätty 10 kysymystä, kaikki tallentuvat)
+### Pelin aloitusnäkymä
+- Avautuu pelin avausnäkymä jossa annettu pelaajalle tekstimuodossa ohjeet pelaamiseen sekä nappi _Aloita_, josta peli käynnistyy.
+
+### Pelinäkymä
+- Pelissä on kymmenen kysymystä
+- Peli toistaa käyttäjälle yhden audiotiedoston kerrallaan painettaessa nappia _kuuntele_, ja pelaajan on tunnistettava kyseessä olevan kolmisoinnun tyyppi
+  - Sointutyypit: Duuri, molli, vähennetty, ylinouseva
+- Vaihtoehto valitaan _radiobuttoneilla_
+- Napista _Seuraava_ vastaus tallentuu ja käyttäjä pääsee seuraavaan näkymään.
   
 ### Pelatun kierroksen jälkeen 
 
-- pelaaja saa eteensä tulosnäkymän, jossa näkyy mitkä soinnut menivät oikein ja mitkä väärin (tulosnäkymässä ainoastaan saadut pisteet ja tuloksen generointi ei vielä toimi)
-- pelaaja saa tiedon pääsikö high score -listalle.
-- pelaaja näkee suorituksen keston
+- pelaaja saa eteensä tulosnäkymän, jossa näkyy kokonaistulos, sekä erittelyn, josta näkee mitkä soinnut menivät oikein ja mitkä väärin 
 - Mahdollisuus joko
-  - lopettaa pelaaminen lopeta-painikkeesta (tehty)
-  - pelata kierros uudestaan (tehty)
-  - tarkastella high score -listaa (tämä siirtynee etusivulle)
+  - lopettaa pelaaminen _lopeta_-painikkeesta 
+  - pelata kierros uudestaan
+  - tarkastella _huipputulokset: -listaa 
  
 
 ## Jatkokehityksessä suunniteltu toiminnallisuus
