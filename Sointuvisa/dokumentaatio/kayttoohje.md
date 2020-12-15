@@ -47,7 +47,7 @@ Viimeisen kysymyksen kohdalla näkymä on muuten identtinen edellisten kanssa, p
 
 ## Tulosnäkymä
 
-Tässä näkymässä käyttäjä näkee kuinka monta oikeaa vastausta hän on saanut. Tuloksen alla olevista painikkeista _Pelaa uudestaan_ -painike palauttaa pelaajan pelin aloitusnäkymään. _Lopeta_-painike sulkee sovelluksen.
+Tässä näkymässä käyttäjä näkee kuinka monta oikeaa vastausta hän on saanut ja erittelyn vastauksista. Tuloksien alla olevasta _huipputulokset_-painikkeesta pääsee tarkastelemaan parhaita tuloksia. _Pelaa uudestaan_ -painike palauttaa pelaajan pelin aloitusnäkymään. _Lopeta_-painike sulkee sovelluksen.
 
 <img src="https://github.com/AnttiHal/ot-harjoitustyo/blob/master/Sointuvisa/dokumentaatio/images/loppunakyma.png" width="400">
 
