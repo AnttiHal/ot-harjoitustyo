@@ -324,7 +324,7 @@ public class sointuvisaUi extends Application {
                 }
                 Platform.exit();
             });
-            endPane.getChildren().addAll(header(), endText, qu1, qu2, qu3, qu4, qu5, qu6, qu7, qu8, qu9, qu10, error,HSButton2, playAgain, quit);
+            endPane.getChildren().addAll(header(), endText, qu1, qu2, qu3, qu4, qu5, qu6, qu7, qu8, qu9, qu10, error, HSButton2, playAgain, quit);
             endScene = new Scene(endPane, 500, 500);
             primaryStage.setScene(endScene);
 
@@ -368,6 +368,7 @@ public class sointuvisaUi extends Application {
             }
         }
     }
+
     //Highscore Scene
     public Scene getHighScoreScene(Scene backScene, Stage ps) throws Exception {
         VBox HSPane = new VBox(10);
@@ -397,6 +398,7 @@ public class sointuvisaUi extends Application {
             sointuvisaService.addAnswer(selected);
         }
     }
+
     //QUestion template
     public VBox addQuestiontemplate(Question q) throws URISyntaxException {
         Text text = header();
@@ -445,7 +447,7 @@ public class sointuvisaUi extends Application {
                 }
             }
         });
-        
+
         Media media1 = new Media(this.getClass().getResource(q.getAudioUrl()).toString());
         MediaPlayer mediaPlayer1 = new MediaPlayer(media1);
         play1.setOnAction(e -> {
