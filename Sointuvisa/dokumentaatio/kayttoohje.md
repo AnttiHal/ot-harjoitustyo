@@ -21,7 +21,7 @@ java -jar Sointuvisa-app.jar
 
 ## Etusivu
 
-Sovellus käynnistyy nimenantonäkymään:
+Sovellus käynnistyy nimenantonäkymään:<br>
 <img src="https://github.com/AnttiHal/ot-harjoitustyo/blob/master/Sointuvisa/dokumentaatio/images/nimenantonakyma.png" width="400">
 
 Nimi annetaan syöttämällä nimi syötekenttään ja painamalla painiketta _OK_.
