@@ -19,6 +19,7 @@ import sointuvisa.domain.User;
 
 /**
  *
+ * Käyttäjätietojen tallentamisesta huolehtiva luokka.
  * @author anttihalmetoja
  */
 public class FileUserDao implements UserDao {
@@ -44,14 +45,26 @@ public class FileUserDao implements UserDao {
             writer.close();
         }
     }
-
+    /**
+     * Metodi luo käyttäjän
+     *
+     @param user käyttäjän nimi
+     * 
+     @return käyttäjä
+     * 
+     */
     @Override
     public User create(User user) throws Exception {
         users.add(user);
         save();
         return user;
     }
-
+    /**
+     * Metodi palauttaa kolmen kärki -listan
+     *
+     @return topthree-lista
+     * 
+     */
     public ArrayList<User> getTopThree() {
         ArrayList<User> thebest = new ArrayList<>();
         Collections.sort(users, Comparator.comparing(User::getPoints));
@@ -73,7 +86,14 @@ public class FileUserDao implements UserDao {
 
         return thebest;
     }
-
+/**
+     * Metodi palauttaa käyttäjän käyttäjänimen perusteella
+     *
+     *@param username käyttjänä nimi
+     * 
+     @return käyttäjä
+     * 
+     */
     @Override
     public User findUserByName(String username) throws FileNotFoundException {
 
@@ -91,7 +111,15 @@ public class FileUserDao implements UserDao {
             }
         }
     }
-
+    
+    /**
+     * Metodi palauttaa käyttäjän pisteet
+     *
+     @param user käyttäjä
+     * 
+     @return käyttäjän pisteet
+     * 
+     */
     @Override
     public int getUserPoints(User user) throws Exception {
         int points = 0;
@@ -122,7 +150,13 @@ public class FileUserDao implements UserDao {
     public void savePoints() throws Exception {
         save();
     }
-
+    /**
+     * Metodi nollaa käyttäjän tulokset
+     *
+     *@param user käyttäjä
+     *     
+     * 
+     */
     @Override
     public void setPointsToZero(User user) throws Exception {
         for (User u : users) {

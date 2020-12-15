@@ -124,6 +124,7 @@ public class sointuvisaUi extends Application {
 
         //Start scene
         VBox startPane = new VBox(10);
+        startPane.setPadding(new Insets(10));
         Text welcomeText = new Text();
         welcomeText.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
 
@@ -137,7 +138,7 @@ public class sointuvisaUi extends Application {
         startPane.getChildren().add(header);
         startPane.getChildren().add(welcomeText);
         startPane.getChildren().add(startButton);
-        startScene = new Scene(startPane, 300, 200);
+        startScene = new Scene(startPane, 300, 250);
 
         //QuestionScene 1
         q1 = sointuvisaService.getQuestionById(1);
@@ -257,6 +258,7 @@ public class sointuvisaUi extends Application {
             checkAnswerAndRaisePointsIfCorrect(q10);
             addAnswer();
             VBox endPane = new VBox(10);
+            endPane.setPadding(new Insets(10));
             Text endText = new Text();
             ArrayList<Question> list;
             Text qu1 = new Text();
@@ -269,6 +271,7 @@ public class sointuvisaUi extends Application {
             Text qu8 = new Text();
             Text qu9 = new Text();
             Text qu10 = new Text();
+            Text error = new Text();
             try {
                 list = sointuvisaService.getQuestionList();
                 qu1.setText("Kysymys 1, oikea sointutyyppi:" + list.get(0).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(0));
@@ -283,7 +286,7 @@ public class sointuvisaUi extends Application {
                 qu10.setText("Kysymys 10, oikea sointutyyppi:" + list.get(9).getChordType() + ", vastauksesi:" + sointuvisaService.getAnswerByNumber(9));
 
             } catch (Exception ex) {
-                Logger.getLogger(sointuvisaUi.class.getName()).log(Level.SEVERE, null, ex);
+                error.setText("Et antanut yhtään vastausta");
             }
 
             endText.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
@@ -321,7 +324,7 @@ public class sointuvisaUi extends Application {
                 }
                 Platform.exit();
             });
-            endPane.getChildren().addAll(header(), endText, qu1, qu2, qu3, qu4, qu5, qu6, qu7, qu8, qu9, qu10, HSButton2, playAgain, quit);
+            endPane.getChildren().addAll(header(), endText, qu1, qu2, qu3, qu4, qu5, qu6, qu7, qu8, qu9, qu10, error,HSButton2, playAgain, quit);
             endScene = new Scene(endPane, 500, 500);
             primaryStage.setScene(endScene);
 
@@ -365,9 +368,10 @@ public class sointuvisaUi extends Application {
             }
         }
     }
-
+    //Highscore Scene
     public Scene getHighScoreScene(Scene backScene, Stage ps) throws Exception {
         VBox HSPane = new VBox(10);
+        HSPane.setPadding(new Insets(10));
         ArrayList<User> theBest = sointuvisaService.getTopThree();
         Text tulokset = new Text();
         Text yksi = new Text();
@@ -382,7 +386,7 @@ public class sointuvisaUi extends Application {
             ps.setScene(backScene);
         });
         HSPane.getChildren().addAll(header(), tulokset, yksi, kaksi, kolme, backButton);
-        HSScene = new Scene(HSPane, 300, 200);
+        HSScene = new Scene(HSPane, 300, 250);
         return HSScene;
     }
 
@@ -393,7 +397,7 @@ public class sointuvisaUi extends Application {
             sointuvisaService.addAnswer(selected);
         }
     }
-
+    //QUestion template
     public VBox addQuestiontemplate(Question q) throws URISyntaxException {
         Text text = header();
 
